@@ -1,0 +1,120 @@
+<html>
+
+	<head>
+		<title>{%block title%}Prologger | v0.1{%endblock%}</title>
+		
+		<style type="text/css">
+		{%block css%}
+		       body {
+                    margin:50px 0px; padding:0px; /* Need to set body margin and padding to get consistency between browsers. */
+                    text-align:center; /* Hack for IE5/Win */
+                    font-family:calibri;
+                }
+                
+            #content {
+                margin:0px auto; /* Right and left margin widths set to "auto" */
+                text-align:center; /* Counteract to IE5/Win Hack */
+                padding:15px;
+                border:none;
+                background-color:white;
+                position:absolute;
+                top:50%;
+                left:50%;
+                height:400px;
+                width:540px;
+                margin-top:-200px;
+                margin-left:-270px;
+            }
+            
+            .main-table {
+                width:100%;
+                text-align:center;
+                vertical-align:center;
+                padding-top:40px;
+                border=1px solid black;
+            }
+            
+            input.text {
+                font-family:calibri;
+                font-size:15pt;
+                font-weight:normal;
+                background-color:white;
+                border-color:grey;
+                border-top-style:none;
+                border-right-style:none;
+                border-left-style:none;
+                border-bottom-style:solid;
+                border-width:2px;
+                color:black; 
+            }
+            
+            input.submit {
+                font-family:calibri;
+                font-size:15pt;
+                font-weight:normal;
+                background-color:grey;
+                border-color:grey;
+                border-top-style:none;
+                border-right-style:none;
+                border-left-style:none;
+                border-bottom-style:none;
+                border-width:2px;
+                color:white; 
+            }
+            
+            A:link {text-decoration: none; border-bottom: 1px dotted #ba0000; color: grey;}
+            A:visited {text-decoration: none; border-bottom: 1px dotted #ba0000; color: grey;}
+            A:active {text-decoration: none; border-bottom: 1px dotted #ba0000; color: grey;}
+            A:hover { color: red;}
+            {%endblock%}
+		</style>
+	</head>
+	
+	<body>
+
+		<div id="content">
+		{%block headerimg%}
+			<img src="{{MEDIA_URL}}logo-flattened-cropped.png">
+		{%endblock%}
+		{%block content%}	
+			<form action="/login/" method="post" target="_blank" onsubmit="return window.confirm(&quot;You are submitting information to an external page.\nAre you sure?&quot;);">{% csrf_token %}
+				<table class="main-table" id="login">
+					<tr>
+						<td>
+							<input class="text" type="text" name="username">
+						</td>
+						<td>
+							<input class="text" type="text" name="api_token">
+						</td>
+						<td>
+							<input class="submit" type="submit" value="log in">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Github Username
+						</td>
+						<td>
+							Github API Token
+						</td>
+						<td>
+							
+						</td>
+					</tr>
+				</table>
+				
+				<table class="main-table" id="link">
+					<tr>
+						<td>
+							<a href="{% url about %}">About</a>
+						</td>
+					</tr>
+				</table>
+				
+			</form>
+			{%endblock%}
+		</div>
+
+	<body>
+
+<html>
