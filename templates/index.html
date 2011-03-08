@@ -5,7 +5,7 @@
 		
 		<style type="text/css">
 		{%block css%}
-		       body {
+		body {
                     margin:50px 0px; padding:0px; /* Need to set body margin and padding to get consistency between browsers. */
                     text-align:center; /* Hack for IE5/Win */
                     font-family:calibri;
@@ -38,14 +38,14 @@
                 font-family:calibri;
                 font-size:15pt;
                 font-weight:normal;
-                background-color:white;
+                background-color:#C0C0C0;
                 border-color:grey;
                 border-top-style:none;
                 border-right-style:none;
                 border-left-style:none;
                 border-bottom-style:solid;
                 border-width:2px;
-                color:black; 
+                color:white; 
             }
             
             input.submit {
@@ -62,10 +62,10 @@
                 color:white; 
             }
             
-            A:link {text-decoration: none; border-bottom: 1px dotted #ba0000; color: grey;}
-            A:visited {text-decoration: none; border-bottom: 1px dotted #ba0000; color: grey;}
-            A:active {text-decoration: none; border-bottom: 1px dotted #ba0000; color: grey;}
-            A:hover { color: red;}
+            A:link {text-decoration: none; border-bottom: 1px dashed #ba0000; color: grey;}
+            A:visited {text-decoration: none; border-bottom: 1px dashed #ba0000; color: grey;}
+            A:active {text-decoration: none; border-bottom: 1px dashed #ba0000; color: grey;}
+            A:hover { text-decoration: none; border-bottom: 1px solid #ba0000; color: red;}
             {%endblock%}
 		</style>
 	</head>
@@ -76,8 +76,12 @@
 		{%block headerimg%}
 			<img src="{{MEDIA_URL}}logo-flattened-cropped.png">
 		{%endblock%}
+		{% if not  github %}		
+<p style="color: red;">Please submit correct credentials</p>
+		{% else %}
+		
 		{%block content%}	
-			<form action="/login/" method="post" target="_blank" onsubmit="return window.confirm(&quot;You are submitting information to an external page.\nAre you sure?&quot;);">{% csrf_token %}
+			<form action="login/" method="post" target="_blank" onsubmit="return window.confirm(&quot;You are submitting information to an external page.\nAre you sure?&quot;);">{% csrf_token %}
 				<table class="main-table" id="login">
 					<tr>
 						<td>
@@ -112,7 +116,9 @@
 				</table>
 				
 			</form>
+			
 			{%endblock%}
+			{%endif%}
 		</div>
 
 	<body>

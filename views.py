@@ -13,18 +13,18 @@ from django.template import RequestContext
 
 def view(request, template):
 	c = {}
+	media = {'MEDIA_URL' : MEDIA_URL }
 	c.update(csrf(request))
-	try:
-		username = request.POST.get('username', '')
-		password = request.POST.get('api_token', '')
-		#creating a dictionary for context
-		d = {'username': username, "MEDIA_URL": MEDIA_URL}
-		# adding d to c dictionary
-		c.update(d)
-		print c
-	except:
-		print c
-		user = ''
+	c.update(media)
+	username = request.POST.get('username', '')
+	api_token = request.POST.get('api_token', '')
+	github = Github(username=username, api_token=api_token)
+	gh = {'github': github}
+	#creating a dictionary for context
+	u = {'username': username}
+	# adding d to c dictionary
+	c.update(u)
+	c.update(gh)
 	return render_to_response(template,  c)
 	
 def login(request):

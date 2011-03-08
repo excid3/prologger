@@ -9,7 +9,8 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Mahdi Yusuf', 'yusuf.mahdi@gmail.com'),
+     ('Mahdi Yusuf', 'yusuf.mahdi@gmail.com'),
+     
 )
 
 MANAGERS = ADMINS
@@ -50,7 +51,12 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/"
+if (sys.platform == 'linux2'){
 MEDIA_ROOT = '/home/myusuf3/github/prologger/static/'
+}else{
+MEDIA_ROOT = 'E:\prologger\/repo\prologger\static\/'
+}
+
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).

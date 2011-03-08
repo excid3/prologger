@@ -19,6 +19,7 @@ urlpatterns = patterns('',
      url(r'^$', 'views.view', {'template': 'index.html'}, name='index'),
      (r'^login/', login),
      url(r'^about/$', 'views.view', {'template': 'about.html'}, name = 'about'),
+     url(r'^home/$', 'views.view', {'template' : 'home.html'}, name = 'home'),
     # Uncomment the next line to enable the admin:
      (r'^admin/', include(admin.site.urls)),
 )
