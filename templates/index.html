@@ -74,12 +74,13 @@
 
 		<div id="content">
 		{%block headerimg%}
-		<a href="http://localhost/">
+		<a href="http://localhost/" style="text-decoration: none; border:none">
 			<img src="{{MEDIA_URL}}logo-flattened-cropped.png">
-			</a>
+		</a>
 		{%endblock%}
+
 		{% if not github %}		
-<p style="color: red;">Please submit correct credentials</p>
+		<p style="color: red;">Please submit correct credentials</p>
 		{% else %}
 		
 		{%block content%}	
