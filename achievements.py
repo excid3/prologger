@@ -3,7 +3,7 @@ from github2.client import Github
 #achievement dictionary
 achievements = {}
 
-class Achievement(object, username, api_token):
+class Achievements(object, username, api_token):
 	self.username = username
 	self.api_token = api_token
 
