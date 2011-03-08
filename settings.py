@@ -10,6 +10,7 @@ TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
      ('Mahdi Yusuf', 'yusuf.mahdi@gmail.com'),
+     ('Ahmed Hammad', 'ahmed.hammad@gmail.com')
      
 )
 
