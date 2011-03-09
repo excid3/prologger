@@ -15,6 +15,7 @@ Tracking all the achievements you gain on github. Stackoverflow to follow soon.
 ## Getting started.
 1. Install Python
 2. Install Django
-3. Win!
+3. Install https://github.com/ask/python-github2
+4. Win!
 
 Right now it makes liberal use of Github's API, resulting in a quick API limit exceeded if abused.  Be careful.
