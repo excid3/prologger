@@ -7,6 +7,13 @@ import sys
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+ACCOUNT_ACTIVATION_DAYS = 1
+#email settings
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'prologgerapp@gmail.com'
+EMAIL_HOST_PASSWORD = 'sketkiUx5'
+EMAIL_PORT = 587
 
 ADMINS = (
      ('Mahdi Yusuf', 'yusuf.mahdi@gmail.com'),
@@ -19,7 +26,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'prologger',                      # Or path to database file if using sqlite3.
+        'NAME': 'prologger.db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -113,4 +120,4 @@ INSTALLED_APPS = (
      # registration app
      'registration',
 )
-ACCOUNT_ACTIVATION_DAYS = 1
+
