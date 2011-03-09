@@ -20,6 +20,7 @@ urlpatterns = patterns('',
      (r'^login/', login),
      url(r'^about/$', 'views.view', {'template': 'about.html'}, name = 'about'),
      url(r'^home/$', 'views.view', {'template' : 'home.html'}, name = 'home'),
+     (r'^accounts/', include('registration.backends.default.urls')),
     # Uncomment the next line to enable the admin:
      (r'^admin/', include(admin.site.urls)),
 )

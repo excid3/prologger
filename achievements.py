@@ -97,7 +97,20 @@ def linus(self):
 		else:
 		continue
 	achievements.update(linus)
-def tagit(self):
+	
+def pushable(self):
+	pushable = self.client.repos.pushable()
+	if len(pushable)>0:
+		pushable ={'pushable' : True}
+	else:
+		pushable ={'pushable' : False}
+def kickingit(self):
+	pass
+def wearefamily(self):
+	collabs = self.client.repos.list_collaborators()
+	
+
+		
 	
 
 
