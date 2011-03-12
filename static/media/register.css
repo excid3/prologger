@@ -1,0 +1,72 @@
+body {
+		margin:50px 0px; padding:0px;
+		text-align:center;
+		font-family:calibri;
+	}
+	
+#content {
+	margin:0px auto;
+	text-align:center;
+	padding:15px;
+	border:none;
+	background-color:white;
+	position:relative;
+	top:50%;
+	left:50%;
+	height:400px;
+	width:540px;
+	margin-top:50px;
+	margin-left:-270px;
+}
+
+#footer {
+	font-family:calibri;
+	font-size:75%;
+	text-align:center;
+	padding:15px;
+	border:none;
+	background-color:white;
+	position:relative;
+	bottom:10%
+}
+
+.main-table {
+	width:100%;
+	text-align:center;
+	vertical-align:center;
+	padding-top:40px;
+	border=1px solid black;
+}
+
+input.text {
+	font-family:calibri;
+	font-size:15pt;
+	font-weight:normal;
+	background-color:#C0C0C0;
+	border-color:grey;
+	border-top-style:none;
+	border-right-style:none;
+	border-left-style:none;
+	border-bottom-style:solid;
+	border-width:2px;
+	color:white; 
+}
+
+input.submit {
+	font-family:calibri;
+	font-size:15pt;
+	font-weight:normal;
+	background-color:grey;
+	border-color:grey;
+	border-top-style:none;
+	border-right-style:none;
+	border-left-style:none;
+	border-bottom-style:none;
+	border-width:2px;
+	color:white; 
+}
+
+A:link {text-decoration: none; border-bottom: 1px dashed #ba0000; color: grey;}
+A:visited {text-decoration: none; border-bottom: 1px dashed #ba0000; color: grey;}
+A:active {text-decoration: none; border-bottom: 1px dashed #ba0000; color: grey;}
+A:hover { text-decoration: none; border-bottom: 1px solid #ba0000; color: red;}
