@@ -144,6 +144,7 @@ class Achievements(object):
 		else:
 			wearefamily = {'wearefamily': False}
 		self.achievements.update(wearefamily)
+		
 	
 	def megarepo(self):
 		megarepo = {'megarepo': False}
