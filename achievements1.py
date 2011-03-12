@@ -26,11 +26,8 @@ def main():
 	points = ach.get_achievements()
 	print "You have unlocked the following achievements! Congratulations!!"
 	print simplejson.dumps(points)
-	
-	
-	
 
-class Achievements(object):
+class Achievements1(object):
 
 	#achievement dictionary
 	achievements = {}
