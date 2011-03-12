@@ -8,9 +8,19 @@ import sys
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+# number of days for activation
+ACCOUNT_ACTIVATION_DAYS = 1
+
+#email settings
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'prologgerapp@gmail.com'
+EMAIL_HOST_PASSWORD = 'sketkiUx5'
+EMAIL_PORT = 587
+
 ADMINS = (
      ('Mahdi Yusuf', 'yusuf.mahdi@gmail.com'),
-     ('Ahmed Hammad', 'ahmed.hammad@gmail.com')
+     ('Ahmed Hammad', 'ahmed.hammad@gmail.com'),
      
 )
 
@@ -19,7 +29,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'prologger',                      # Or path to database file if using sqlite3.
+        'NAME': 'prologger.db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -44,7 +54,7 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = True
+USE_I18N = False
 
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale
@@ -54,6 +64,8 @@ USE_L10N = True
 # Example: "/home/media/media.lawrence.com/"
 if (sys.platform == 'linux2'):
 	MEDIA_ROOT = '/home/myusuf3/github/prologger/static/'
+elif(sys.platform == 'darwin'):
+	MEDIA_ROOT = '/Users/bryanenglish/Dropbox/prologger/static/'
 else:
 	MEDIA_ROOT = 'E:\prologger\/repo\prologger\static\/'
 
@@ -113,4 +125,4 @@ INSTALLED_APPS = (
      # registration app
      'registration',
 )
-ACCOUNT_ACTIVATION_DAYS = 1
+
