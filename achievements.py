@@ -157,7 +157,7 @@ class Achievements(object):
 		pottymouth = {'pottymouth': False}
 		repos = self.client.repos.list()
 		commits = []
-		words = ['fuck', 'shit', 'crap', 'cock', 'bitch', 'fag', 'ass', 'asshole']
+		words = ['fuck', 'shit', 'piss', 'cunt', 'tits', 'motherfucker', 'cocksucker']
 		for repo in repos:
 			commits += self.client.commits.list(str(repo.project))
 			for commit in commits:
