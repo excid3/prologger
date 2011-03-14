@@ -21,7 +21,7 @@ def string_found(string1, string2):
 def main():
     username = sys.argv[1]
     api_token = sys.argv[2]
-    ach = Achievements1(username, api_token)
+    ach = AchievementsAnalytics(username, api_token)
     points = ach.get_achievements()
     print "You have unlocked the following achievements! Congratulations!!"
     print simplejson.dumps(points)
