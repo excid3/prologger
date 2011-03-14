@@ -9,6 +9,10 @@ from django.http import HttpResponseRedirect
 #github api
 from github2.client import Github
 
+from achievements.models import ProloggerUser
+
+from achievements_analytics import AchievementsAnalytics
+
 from django.template import RequestContext
 
 def view(request, template):
@@ -26,6 +30,16 @@ def view(request, template):
 	c.update(u)
 	c.update(gh)
 	return render_to_response(template,  c)
+	
+def analyze_achievements(request):
+	user = request.user
+	prologger_user = ProloggerUser.objects.get(user=user)
+	github_user = prologger_user.github_user
+	github_apitoken = prologger_user.github_apitoken 
+	ach = AchievementsAnalytics(github_user, github_apitoken, prologger_user)
+	achi = ach.get_achievements()
+	html = "<html><body>The current user is  %s, prologger_user is : %s, the github user : %s, and the api_token %s.</body><p>%s</p></html>" % (user, prologger_user , github_user, github_apitoken, achi)
+	return HttpResponse(html)
 	
 def login(request):
 	username = request.POST.get('username', '')

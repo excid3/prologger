@@ -124,5 +124,6 @@ INSTALLED_APPS = (
      'django.contrib.admindocs',
      # registration app
      'registration',
+     'prologger.achievements'
 )
 
