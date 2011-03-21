@@ -1,0 +1,142 @@
+body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		text-align:center;
+		font-family:calibri;
+	}
+	
+#padding {
+	padding: 0 0 45px 0;
+	}
+	
+#header {
+	margin:0px auto;
+	text-align:center;
+	padding:15px;
+	border:none;
+	background-color:white;
+	background-image:url('../header-background-flattened.png');
+	position:relative;
+	left:50%;
+	height:130px;
+	width:840px;
+	margin-top:10px;
+	margin-left:-420px;
+	border:0px solid black;
+}
+
+#main-header-links {
+	font-size:75%;
+	margin:0px auto;
+	padding-right:10px;
+	text-align:right;
+	border:none;
+	background-color:white;
+	position:relative;
+	height:auto;
+	width:auto;
+}
+
+#container {
+	margin:0px auto;
+	text-align:center;
+	padding:15px;
+	border:none;
+	background-color:none;
+	position:relative;
+	left:50%;
+	min-height:640px;
+	width:840px;
+	margin-top:10px;
+	margin-left:-420px;
+	border:0px solid black;
+}
+
+#main-quickView {
+	margin:0px auto;
+	text-align:left;
+	border:none;
+	padding:15px;
+	background-color:none;
+	position:absolute;
+	height:91%;
+	width:27%;
+	float:right;
+	overflow:hidden;
+	border:1px solid black;
+}
+	
+#main-content {
+	margin:0px auto;
+	text-align:left;
+	padding:15px;
+	background-color:none;
+	position:absolute;
+	height:91%;
+	width:60%;
+	float:right;
+	overflow:hidden;
+	margin-left:33%;
+	border:0px solid black;
+}
+
+#footer {
+	margin-top:-25px;
+	font-size:75%;
+	text-align:center;
+	padding:15px;
+	background-color:none;
+	position:relative;
+	margin-top:10px;
+	border:0px solid black;
+}
+
+#main-actionBar {
+	width:80%;
+	font-size:150%;
+	text-align:center;
+	vertical-align:center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#main-portrait {
+	width:auto;
+	height:250px;
+	margin-bottom:20px;
+	background-color:green;
+	}
+
+input.text {
+	font-family:calibri;
+	font-size:15pt;
+	font-weight:normal;
+	background-color:#C0C0C0;
+	border-color:grey;
+	border-top-style:none;
+	border-right-style:none;
+	border-left-style:none;
+	border-bottom-style:solid;
+	border-width:2px;
+	color:white; 
+}
+
+input.submit {
+	font-family:calibri;
+	font-size:15pt;
+	font-weight:normal;
+	background-color:grey;
+	border-color:grey;
+	border-top-style:none;
+	border-right-style:none;
+	border-left-style:none;
+	border-bottom-style:none;
+	border-width:2px;
+	color:white; 
+}
+
+A:link {text-decoration: none; border-bottom: 1px dashed #ba0000; color: grey;}
+A:visited {text-decoration: none; border-bottom: 1px dashed #ba0000; color: grey;}
+A:active {text-decoration: none; border-bottom: 1px dashed #ba0000; color: grey;}
+A:hover { text-decoration: none; border-bottom: 1px solid #ba0000; color: red;}
