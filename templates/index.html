@@ -5,62 +5,51 @@
 		
 		<style type="text/css">
 		{%block css%}
-		body {
-                    margin:50px 0px; padding:0px; /* Need to set body margin and padding to get consistency between browsers. */
-                    text-align:center; /* Hack for IE5/Win */
-                    font-family:calibri;
-                }
-                
+			html, body {
+                height:100%;
+				font-family:calibri;
+            }
+            
+			#wrapper {
+				height-min:100%;
+			}
+			
             #content {
                 margin:0px auto; /* Right and left margin widths set to "auto" */
                 text-align:center; /* Counteract to IE5/Win Hack */
                 padding:15px;
+				padding-bottom:15px;
                 border:none;
-                background-color:white;
+                background-color:none;
                 position:absolute;
                 top:50%;
                 left:50%;
-                height:400px;
+                height:100px;
                 width:540px;
                 margin-top:-200px;
                 margin-left:-270px;
+				
             }
-            
-            .main-table {
-                width:100%;
-                text-align:center;
-                vertical-align:center;
-                padding-top:40px;
-                border=1px solid black;
-            }
-            
-            input.text {
-                font-family:calibri;
-                font-size:15pt;
-                font-weight:normal;
-                background-color:#C0C0C0;
-                border-color:grey;
-                border-top-style:none;
-                border-right-style:none;
-                border-left-style:none;
-                border-bottom-style:solid;
-                border-width:2px;
-                color:white; 
-            }
-            
-            input.submit {
-                font-family:calibri;
-                font-size:15pt;
-                font-weight:normal;
-                background-color:grey;
-                border-color:grey;
-                border-top-style:none;
-                border-right-style:none;
-                border-left-style:none;
-                border-bottom-style:none;
-                border-width:2px;
-                color:white; 
-            }
+			
+            #header {
+                margin:0px auto;
+                text-align:right;
+                padding:5px;
+                border:0px solid black;
+                background-color:none;
+                position:relative;
+                height:auto;
+            }			
+
+			#footer {
+				font-size:75%;
+				text-align:center;
+				padding:15px;
+				background-color:none;
+				position:relative;
+				top:90%;
+				border:0px solid black;
+			}
             
             A:link {text-decoration: none; border-bottom: 1px dashed #ba0000; color: grey;}
             A:visited {text-decoration: none; border-bottom: 1px dashed #ba0000; color: grey;}
@@ -72,56 +61,35 @@
 	
 	<body>
 
+		<div id="header">
+			<a href="http://localhost/">sign in</a> | 
+			<a href="http://localhost/">sign up</a>
+		</div>
+	
 		<div id="content">
-		{%block headerimg%}
-		<a href="http://localhost/" style="text-decoration: none; border:none">
-			<img src="{{MEDIA_URL}}logo-flattened-cropped.png">
-		</a>
-		{%endblock%}
+			{%block headerimg%}
+			<a href="http://localhost/" style="text-decoration: none; border:none">
+				<img src="{{MEDIA_URL}}logo-flattened-cropped.png">
+			</a>
+			{%endblock%}
 
-		{% if not github %}		
-		<p style="color: red;">Please submit correct credentials</p>
-		{% else %}
-		
-		{%block content%}	
-			<form action="login/" method="post" target="_blank" onsubmit="return window.confirm(&quot;You are submitting information to an external page.\nAre you sure?&quot;);">{% csrf_token %}
-				<table class="main-table" id="login">
-					<tr>
-						<td>
-							<input class="text" type="text" name="username">
-						</td>
-						<td>
-							<input class="text" type="text" name="api_token">
-						</td>
-						<td>
-							<input class="submit" type="submit" value="log in">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Github Username
-						</td>
-						<td>
-							Github API Token
-						</td>
-						<td>
-							
-						</td>
-					</tr>
-				</table>
-				
-				<table class="main-table" id="link">
-					<tr>
-						<td>
-							<a href="{% url about %}">About</a>
-						</td>
-					</tr>
-				</table>
-				
-			</form>
+			{% if not github %}		
+			<p style="color: red;">Please submit correct credentials</p>
+			{% else %}
 			
+			{%block content%}	
+
+			<h2 style="text-align:left;">About</h2>
+			<p style="text-align:justify;">
+				Prologger is our attempt to create a gaming achievement system for programming. This initial version will have achievements being collected from Github. Future plans are to move to Stackoverflow and other sites where programmers congregate and <b>achieve things</b>.
+			</p>
+				
 			{%endblock%}
 			{%endif%}
+		</div>
+		
+		<div id="footer">
+			Copyright prologger, 2011
 		</div>
 
 	<body>
