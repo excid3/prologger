@@ -1,0 +1,2 @@
+https://bitbucket.org/ubernostrum/django-registration/get/tip.zip
+http://brodidyouhear.com/~myusuf3/python-github2.tar.gz
