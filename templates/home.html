@@ -14,26 +14,18 @@
 
 		<table id="main-actionBar">
 			<tr>
-				<td><a href="http://localhost/">Home</a></td>
-				<td><a href="http://localhost/">Profile</a></td>
-				<td><a href="http://localhost/">Groups</a></td>
-				<td><a href="http://localhost/">About</a></td>
+				<td><a href="{% url home %}">Home</a></td>
+				<td><a href="{% url profile %}">Profile</a></td>
+				<td><a href="{% url groups %}">Groups</a></td>
+				<td><a href="{% url about %}">About</a></td>
+				<td><a href="{% url faq %}">FAQ</a></td>
 			</tr>
 		</table>
+		<hr />
 	{% endblock %}
 
 	{% block content %}
-
-			<div id="main-content">
-				Main stuff goes here
-			</div>
-			<div id="main-quickView">
-				<div id="main-portrait">
-					image goes here
-				</div>
-				more information here
-			</div>
-			<div style="clear:both"></div>
+		Insert content here!
 	{% endblock %}
 
 <html>
