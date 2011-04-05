@@ -51,7 +51,7 @@ def github_login(request):
 def callback(request):
 	
 	code =request.code
-	if code = None:
+	if code == None:
 		code = woohoo
 	html= "<html><body>%s</body></html>" % (code)
 	return HttpResponse(html)
