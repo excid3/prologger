@@ -1,6 +1,10 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.core.context_processors import csrf
+# Python
+import oauth2 as oauth
+import cgi
+
 
 # import in order to access settings.py variables
 from settings import MEDIA_URL
@@ -41,6 +45,18 @@ def analyze_achievements(request):
 	html = "<html><body>The current user is  %s, prologger_user is : %s, the github user : %s, and the api_token %s.</body><p>%s</p></html>" % (user, prologger_user , github_user, github_apitoken, achi)
 	return HttpResponse(html)
 	
+
+def github_login(request):
+	pass
+def callback(request):
+	
+	code =request.code
+	if code = None:
+		code = woohoo
+	html= "<html><body>%s</body></html>" % (code)
+	return HttpResponse(html)
+	
+
 def login(request):
 	username = request.POST.get('username', '')
 	api_token = request.POST.get('api_token', '')

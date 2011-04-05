@@ -27,6 +27,7 @@ urlpatterns = patterns('',
      (r'^accounts/', include('registration.backends.default.urls')),
     # Uncomment the next line to enable the admin:
      (r'^admin/', include(admin.site.urls)),
+     (r'^oauth/callback/', callback),
 )
 
 if settings.DEBUG:
