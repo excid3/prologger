@@ -49,7 +49,7 @@ def analyze_achievements(request):
 def github_login(request):
 	pass
 def callback(request):
-	
+	print request
 	code =request.code
 	if code == None:
 		code = woohoo
