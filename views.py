@@ -86,5 +86,5 @@ def login(request):
 
     request_token = dict(urlparse.parse_qsl(content))
     url = "%sclient_id=%s&redirect_uri=%s" % (authorize_url, consumer_key, redirect_url)
-		return HttpResponseRedirect(url)
+	return HttpResponseRedirect(url)
 	
