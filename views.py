@@ -7,6 +7,7 @@ from django.template import RequestContext
 # Python
 import oauth2 as oauth
 import cgi
+import urlparse
 #Prologger
 from github2.client import Github
 from achievements.models import ProloggerUser
