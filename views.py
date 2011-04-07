@@ -8,6 +8,7 @@ from django.template import RequestContext
 import oauth2 as oauth
 import cgi
 import urlparse
+import urllib
 #Prologger
 from github2.client import Github
 from achievements.models import ProloggerUser
@@ -17,7 +18,7 @@ from settings import MEDIA_URL
 
 authorize_url = 'https://github.com/login/oauth/authorize?'
 access_token_url = 'https://github.com/login/oauth/access_token?'
-redirect_url = 'http://prologger.ep.io/oauth/callback/'
+redirect_url = 'http://localhost:8000/oauth/callback/'
 
 
 #TODO move these to settings.py
@@ -63,12 +64,18 @@ def callback(request):
     redirect_uri=http://www.example.com/oauth_redirect&
     client_secret=...&
     code=..."""
-    _url = 'http://prologger.ep.io/oauth/token/'
+    _url = 'http://localhost:8000/oauth/callback/'
     code = request.GET['code']
     url = "%sclient_id=%s&redirect_uri=%s&client_secret=%s&code=%s" % (access_token_url, consumer_key, _url, consumer_secret, code )
-    response = client.request(access_token_url, "POST")
-    return HttpResponseRedirect(response)
-
+    print url
+    f =  urllib.urlopen(url)
+    print f
+    blah = dict(cgi.parse_qsl(f.read()))
+    print blah['access_token']
+    response = client.request(access_token_url, "GET")
+#    print response
+    return HttpResponseRedirect('/')
+    
 def logout(request):
     logout(request)
     return HttpResponseRedirect('/')
