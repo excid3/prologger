@@ -62,7 +62,7 @@ def callback(request):
     client_secret=...&
     code=..."""
     code = request.session[code]
-    url = "%sclient_id=%s&redirect_uri=%s&client_secret=%s&code=%s" % (access_token_url, consumer_key, redirect_url, )
+    url = "%sclient_id=%s&redirect_uri=%s&client_secret=%s&code=%s" % (access_token_url, consumer_key, redirect_url, consumer_secret, code )
     client.request(access_token_url, POST)
     print request.session
 
