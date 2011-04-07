@@ -71,20 +71,10 @@ def logout(request):
     return HttpResponseRedirect('/')
 
 def login(request):
-	"""username = request.POST.get('username', '')
-	api_token = request.POST.get('api_token', '')
-	github = Github(username=username, api_token=api_token)
-	print github
-	if github is not None:
-		return HttpResponseRedirect("/")
-	else:
-		# Show an error page
-		return HttpResponseRedirect("/")"""
 	resp, content = client.request(authorize_url, "GET")
-    if resp['status'] != '200':
-        raise Exception("Invalid response %s." % resp['status'])
-
-    request_token = dict(urlparse.parse_qsl(content))
-    url = "%sclient_id=%s&redirect_uri=%s" % (authorize_url, consumer_key, redirect_url)
+	if resp['status'] != '200':
+	    raise Exception("Invalid response %s." % resp['status'])
+	request_token = dict(urlparse.parse_qsl(content))
+	url = "%sclient_id=%s&redirect_uri=%s" % (authorize_url, consumer_key, redirect_url)
 	return HttpResponseRedirect(url)
 	
