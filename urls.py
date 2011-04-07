@@ -19,7 +19,6 @@ urlpatterns = patterns('',
      url(r'^$', 'views.view', {'template': 'index.html'}, name='index'),
      (r'^login/', login),
      (r'^logout/', logout),
-     ()
      (r'^analyze/',analyze_achievements),
      url(r'^about/$', 'views.view', {'template': 'about.html'}, name = 'about'),
      url(r'^home/$', 'views.view', {'template' : 'home.html'}, name = 'home'),
