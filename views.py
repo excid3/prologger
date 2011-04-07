@@ -55,17 +55,19 @@ def analyze_achievements(request):
 	
 
 def github_login(request):
-	pass
+    pass
+	
 def callback(request):
     """POST https://github.com/login/oauth/access_token?
     client_id=...&
     redirect_uri=http://www.example.com/oauth_redirect&
     client_secret=...&
     code=..."""
+    _url = 'http://prologger.ep.io/oauth/token/'
     code = request.GET['code']
-    url = "%sclient_id=%s&redirect_uri=%s&client_secret=%s&code=%s" % (access_token_url, consumer_key, redirect_url, consumer_secret, code )
+    url = "%sclient_id=%s&redirect_uri=%s&client_secret=%s&code=%s" % (access_token_url, consumer_key, _url, consumer_secret, code )
     response = client.request(access_token_url, "POST")
-    return HttpResponseRedirect(response)
+    
 
 def logout(request):
     logout(request)
