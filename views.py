@@ -1,23 +1,30 @@
+#Django
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.core.context_processors import csrf
+from django.http import HttpResponseRedirect
+from django.template import RequestContext
 # Python
 import oauth2 as oauth
 import cgi
-
-
-# import in order to access settings.py variables
-from settings import MEDIA_URL
-#allow for redirections after work to reload a page with new data
-from django.http import HttpResponseRedirect
-#github api
+#Prologger
 from github2.client import Github
-
 from achievements.models import ProloggerUser
-
 from achievements_analytics import AchievementsAnalytics
+from settings import MEDIA_URL
 
-from django.template import RequestContext
+
+authorize_url = 'https://github.com/login/oauth/authorize?'
+access_token_url = 'https://github.com/login/oauth/access_token?'
+redirect_url = 'http://prologger.ep.io/oauth/callback/'
+
+
+#TODO move these to settings.py
+consumer_key = 'c4e2f51b2faaed2d1762'
+consumer_secret = 'ca01dbc8e37a89b6de54e48fec27d85e02289314'
+
+consumer = oauth.Consumer(consumer_key, consumer_secret)
+client = oauth.Client(consumer)
 
 def view(request, template):
 	c = {}
@@ -55,10 +62,13 @@ def callback(request):
 		code = woohoo
 	html= "<html><body>%s</body></html>" % (code)
 	return HttpResponse(html)
-	
+
+def logout(request):
+    logout(request)
+    return HttpResponseRedirect('/')
 
 def login(request):
-	username = request.POST.get('username', '')
+	"""username = request.POST.get('username', '')
 	api_token = request.POST.get('api_token', '')
 	github = Github(username=username, api_token=api_token)
 	print github
@@ -66,8 +76,12 @@ def login(request):
 		return HttpResponseRedirect("/")
 	else:
 		# Show an error page
-		return HttpResponseRedirect("/")
-		
-def loggedin(request):
-	pass
+		return HttpResponseRedirect("/")"""
+	resp, content = client.request(authorize_url, "GET")
+    if resp['status'] != '200':
+        raise Exception("Invalid response %s." % resp['status'])
+
+    request_token = dict(urlparse.parse_qsl(content))
+    url = "%sclient_id=%s&%s" % (authorize_url, consumer_key, redirect_url)
+		return HttpResponseRedirect(url)
 	
