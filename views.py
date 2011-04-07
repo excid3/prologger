@@ -62,7 +62,7 @@ def callback(request):
     redirect_uri=http://www.example.com/oauth_redirect&
     client_secret=...&
     code=..."""
-    code = request.session[code]
+    code = request.session['code']
     url = "%sclient_id=%s&redirect_uri=%s&client_secret=%s&code=%s" % (access_token_url, consumer_key, redirect_url, consumer_secret, code )
     client.request(access_token_url, POST)
     print request.session
