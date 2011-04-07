@@ -56,12 +56,15 @@ def analyze_achievements(request):
 def github_login(request):
 	pass
 def callback(request):
-	print request
-	code =request.code
-	if code == None:
-		code = woohoo
-	html= "<html><body>%s</body></html>" % (code)
-	return HttpResponse(html)
+    """POST https://github.com/login/oauth/access_token?
+    client_id=...&
+    redirect_uri=http://www.example.com/oauth_redirect&
+    client_secret=...&
+    code=..."""
+    code = request.session[code]
+    url = "%sclient_id=%s&redirect_uri=%s&client_secret=%s&code=%s" % (access_token_url, consumer_key, redirect_url, )
+    client.request(access_token_url, POST)
+    print request.session
 
 def logout(request):
     logout(request)
@@ -82,6 +85,6 @@ def login(request):
         raise Exception("Invalid response %s." % resp['status'])
 
     request_token = dict(urlparse.parse_qsl(content))
-    url = "%sclient_id=%s&%s" % (authorize_url, consumer_key, redirect_url)
+    url = "%sclient_id=%s&redirect_uri=%s" % (authorize_url, consumer_key, redirect_url)
 		return HttpResponseRedirect(url)
 	
