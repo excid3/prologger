@@ -6,7 +6,7 @@ class AchievementsAdmin(admin.ModelAdmin):
 	pass
 
 class ProloggerUserAdmin(admin.ModelAdmin):
-	list_display = ('user', 'github_user', 'github_apitoken')
+	list_display = ('user', 'oauth_token')
 
 	
 admin.site.register(Achievements, AchievementsAdmin)

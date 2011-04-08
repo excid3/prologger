@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
+from django.contrib.auth.models import User
 # Python
 import oauth2 as oauth
 import cgi
@@ -66,14 +67,29 @@ def callback(request):
     code=..."""
     _url = 'http://localhost:8000/oauth/callback/'
     code = request.GET['code']
-    url = "%sclient_id=%s&redirect_uri=%s&client_secret=%s&code=%s" % (access_token_url, consumer_key, _url, consumer_secret, code )
+    url = "%sclient_id=%s&redirect_uri=%s&client_secret=%s&code=%s" % (access_token_url, consumer_key, _url, consumer_secret, code)
     print url
     f =  urllib.urlopen(url)
-    print f
-    blah = dict(cgi.parse_qsl(f.read()))
-    print blah['access_token']
-    response = client.request(access_token_url, "GET")
-#    print response
+    response = dict(cgi.parse_qsl(f.read()))
+    print response
+    token =  response['access_token']
+    github = Github(access_token=token)
+    #kludge to get current user
+    name =  github.users.show("")
+    print name.login
+    print name.email
+    
+    try:
+        user = User.objects.get(username=name.login)
+        print user
+    except User.DoesNotExist:
+        user = User.objects.create_user(username=name.login, email=name.email)
+        # Save our permanent token and secret for later.
+        profile = ProloggerUser()
+        profile.user = user
+        profile.oauth_token = token
+        profile.save()
+    
     return HttpResponseRedirect('/')
     
 def logout(request):
