@@ -4,42 +4,42 @@
 		prologger | v0.2
 	{% endblock %}
 	{% block header %}
-		<div id="main-header-links">
+		<div id="main-header-logout">
 			Hello User! | <a href="http://localhost/">logout</a>
 		</div>
-		
-		<a href="http://localhost/" style="text-decoration: none; border:none">
-		<img src="{{MEDIA_URL}}logo-flattened-cropped-small.png">
-		</a>
 
-		<table id="main-actionBar">
+		<table id="main-header-links" align="center">
 			<tr>
+				<td align="left">
+					<a href="http://localhost/" style="text-decoration: none; border:none">
+					<img src="{{MEDIA_URL}}logo-flattened-cropped-small.png">
+					</a>
+				</td>
 				<td><a href="{% url home %}">Home</a></td>
 				<td><a href="{% url profile %}">Profile</a></td>
 				<td><a href="{% url groups %}">Groups</a></td>
 				<td><a href="{% url about %}">About</a></td>
-				<td><a href="{% url faq %}">FAQ</a></td>
 			</tr>
 		</table>
-		<hr />
 	{% endblock %}
 
 	{% block content %}
-		
-		<h2 style="text-align:left;">About</h2>
-		<p style="text-align:justify;">
 
-			Prologger is our attempt to create a gaming achievement system for programming. This initial version will have achievements being collected from Github. Future plans are to move to Stackoverflow and other sites where programmers congregate and <b>achieve things</b>.
-		
-		</p>
-		
-		<br />
-		
-		<p>
+			<h2 style="text-align:left;">About</h2>
+			<p style="text-align:justify;">
 
-			We need your help! Come up with a tag line for prologger and you can win a $XX gift certificate to an online retailer of your choice! <a href="">Click here</a> to participate!
-		
-		</p>	
+				Prologger is our attempt to create a gaming achievement system for programming. This initial version will have achievements being collected from Github. Future plans are to move to Stackoverflow and other sites where programmers congregate and <b>achieve things</b>.
+			
+			</p>
+			
+			<br />
+			
+			<p>
+
+				We need your help! Come up with a tag line for prologger and you can win a $XX gift certificate to an online retailer of your choice! <a href="">Click here</a> to participate!
+			
+			</p>
+	
 		
 	{% endblock %}
 

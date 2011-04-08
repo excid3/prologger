@@ -24,7 +24,31 @@
 	{% endblock %}
 
 	{% block content %}
+			<div id="main-content">
+				<h2 style="text-align:left;">User Activity</h2>
+			</div>
+			<div id="main-quickView">
+				<div id="main-portrait">
+					<img src="{{MEDIA_URL}}defaultPortrait.png">
+				</div>
 				
+				<table class="padded-table">
+					<tr><td>
+						<span class="text-label">Username:</span>
+							AwesomePossum
+					</td></tr>
+					<tr><td>
+						<span class="text-label">Name:</span>
+							Rico Suave
+					</td></tr>		
+					<tr><td>
+						<span class="text-label">Location:</span>
+							Awesomeville, MA
+					</td></tr>	
+				</table>
+			</div>
+			<div style="clear:both"></div>
 	{% endblock %}
 
+	
 <html>
