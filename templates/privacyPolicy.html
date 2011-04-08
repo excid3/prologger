@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+	{% block title %}
+		prologger | v0.2
+	{% endblock %}
+	{% block header %}
+		<div id="main-header-logout">
+			Hello User! | <a href="http://localhost/">logout</a>
+		</div>
+
+		<table id="main-header-links" align="center">
+			<tr>
+				<td align="left">
+					<a href="http://localhost/" style="text-decoration: none; border:none">
+					<img src="{{MEDIA_URL}}logo-flattened-cropped-small.png">
+					</a>
+				</td>
+				<td><a href="{% url home %}">Home</a></td>
+				<td><a href="{% url profile %}">Profile</a></td>
+				<td><a href="{% url groups %}">Groups</a></td>
+				<td><a href="{% url about %}">About</a></td>
+			</tr>
+		</table>
+	{% endblock %}
+
+	{% block content %}
+
+			<h2 style="text-align:left;">Privacy Policy</h2>
+			<p style="text-align:justify;">
+
+				Insert generic privacy policy.
+			
+			</p>
+	
+		
+	{% endblock %}
+
+<html>
