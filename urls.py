@@ -18,6 +18,7 @@ urlpatterns = patterns('',
      (r'^admin/doc/', include('django.contrib.admindocs.urls')),
      url(r'^$', 'views.view', {'template': 'index.html'}, name='index'),
      (r'^login/', login),
+     (r'^logout/', logout),
      (r'^analyze/',analyze_achievements),
      url(r'^about/$', 'views.view', {'template': 'about.html'}, name = 'about'),
      url(r'^home/$', 'views.view', {'template' : 'home.html'}, name = 'home'),
@@ -29,6 +30,8 @@ urlpatterns = patterns('',
      (r'^accounts/', include('registration.backends.default.urls')),
     # Uncomment the next line to enable the admin:
      (r'^admin/', include(admin.site.urls)),
+     (r'^oauth/callback/', callback),
+     (r'^oauth/token/', github_login),
 )
 
 if settings.DEBUG:

@@ -10,6 +10,8 @@
 from github2.client import Github
 import sys, re
 from django.utils import simplejson
+from achievements.models import Achievements, ProloggerUser
+from datetime import datetime
 
 
 def string_found(string1, string2):
@@ -42,9 +44,13 @@ class AchievementsAnalytics(object):
         repo = self.client.repos.list()
         if len(repo) >= 10:
             repoman = {'repoman': True}
+            
         else:
-            repoman = {'repoman': False}
-        self.achievements.update(repoman)
+            repoman = Achievements.objects.create(name = "Repoman", date = datetime.now(), description = "Have more than 10 repositories")
+            self.prologger_user.achievements.add(repoman)
+            self.prologger_user.save()
+#           repoman = {'repoman': False}
+#        self.achievements.update(repoman)
 
     def party_of_five(self):
         user = self.client.users.show(self.username)

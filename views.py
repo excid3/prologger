@@ -1,19 +1,33 @@
+#Django
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.core.context_processors import csrf
-
-# import in order to access settings.py variables
-from settings import MEDIA_URL
-#allow for redirections after work to reload a page with new data
 from django.http import HttpResponseRedirect
-#github api
-from github2.client import Github
-
-from achievements.models import ProloggerUser
-
-from achievements_analytics import AchievementsAnalytics
-
 from django.template import RequestContext
+from django.contrib.auth.models import User
+# Python
+import oauth2 as oauth
+import cgi
+import urlparse
+import urllib
+#Prologger
+from github2.client import Github
+from achievements.models import ProloggerUser
+from achievements_analytics import AchievementsAnalytics
+from settings import MEDIA_URL
+
+
+authorize_url = 'https://github.com/login/oauth/authorize?'
+access_token_url = 'https://github.com/login/oauth/access_token?'
+redirect_url = 'http://localhost:8000/oauth/callback/'
+
+
+#TODO move these to settings.py
+consumer_key = 'c4e2f51b2faaed2d1762'
+consumer_secret = 'ca01dbc8e37a89b6de54e48fec27d85e02289314'
+
+consumer = oauth.Consumer(consumer_key, consumer_secret)
+client = oauth.Client(consumer)
 
 def view(request, template):
 	c = {}
@@ -41,17 +55,52 @@ def analyze_achievements(request):
 	html = "<html><body>The current user is  %s, prologger_user is : %s, the github user : %s, and the api_token %s.</body><p>%s</p></html>" % (user, prologger_user , github_user, github_apitoken, achi)
 	return HttpResponse(html)
 	
+
+def github_login(request):
+    pass
+	
+def callback(request):
+    """POST https://github.com/login/oauth/access_token?
+    client_id=...&
+    redirect_uri=http://www.example.com/oauth_redirect&
+    client_secret=...&
+    code=..."""
+    _url = 'http://localhost:8000/oauth/callback/'
+    code = request.GET['code']
+    url = "%sclient_id=%s&redirect_uri=%s&client_secret=%s&code=%s" % (access_token_url, consumer_key, _url, consumer_secret, code)
+    print url
+    f =  urllib.urlopen(url)
+    response = dict(cgi.parse_qsl(f.read()))
+    print response
+    token =  response['access_token']
+    github = Github(access_token=token)
+    #kludge to get current user
+    name =  github.users.show("")
+    print name.login
+    print name.email
+    
+    try:
+        user = User.objects.get(username=name.login)
+        print user
+    except User.DoesNotExist:
+        user = User.objects.create_user(username=name.login, email=name.email)
+        # Save our permanent token and secret for later.
+        profile = ProloggerUser()
+        profile.user = user
+        profile.oauth_token = token
+        profile.save()
+    
+    return HttpResponseRedirect('/')
+    
+def logout(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
 def login(request):
-	username = request.POST.get('username', '')
-	api_token = request.POST.get('api_token', '')
-	github = Github(username=username, api_token=api_token)
-	print github
-	if github is not None:
-		return HttpResponseRedirect("/")
-	else:
-		# Show an error page
-		return HttpResponseRedirect("/")
-		
-def loggedin(request):
-	pass
+	resp, content = client.request(authorize_url, "GET")
+	if resp['status'] != '200':
+	    raise Exception("Invalid response %s." % resp['status'])
+	request_token = dict(urlparse.parse_qsl(content))
+	url = "%sclient_id=%s&redirect_uri=%s" % (authorize_url, consumer_key, redirect_url)
+	return HttpResponseRedirect(url)
 	
