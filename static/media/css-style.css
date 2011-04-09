@@ -1,72 +1,75 @@
-body {
-		height: 100%;
-		margin: 0;
-		padding: 0;
-		text-align:center;
-		font-family:helvetica;
+html, body {
+	height: 100%;
+	font-family:helvetica;
+	text-align:center;
+	}
+
+#wrap {
+	min-height: 100%;
+	background-color:none;
 	}
 	
-#padding {
-	padding: 0 0 45px 0;
+#main {
+	overflow:auto;
+	padding-bottom: 165px;
+	background-color:none;
+	width:840px;
+	margin-left:-420px;	
+	position: relative;
+	left:50%;
+	height:100%;
+	min-height: 600px;
 	}
+
+#footer {
+	position: relative;
+	margin-top: -165px; /* negative value of footer height */
+	height: 165px;
+	clear:both;
+	background-color:grey;
+	color:white;
+	}
+	
+table.footer-contents  td {
+	padding-right:40px;
+	padding-left:40px;
+	background-color:none;
+	position:relative;
+	border: 0px solid;
+	width:auto;
+	vertical-align:top;
+}	
 	
 #header {
-	margin:0px auto;
 	text-align:center;
 	padding:15px;
-	border:none;
-	background-color:white;
-	/* background-image:url('../header-background-flattened.png'); */
-	position:relative;
-	left:50%;
-	height:130px;
-	width:840px;
-	margin-top:10px;
-	margin-left:-420px;
-	margin-bottom:30px;
+	height:70px;
+	margin-bottom:40px;
 	border:0px solid black;
+	background-color:none;
 }
 
 /* logout button bar */
-#main-header-links {
+#main-header-logout {
 	font-size:75%;
 	margin:0px auto;
 	padding-right:10px;
 	text-align:right;
-	border:none;
-	background-color:white;
-	position:relative;
-	height:auto;
-	width:auto;
-}
-
-#footer {
-	margin-top:-25px;
-	font-size:75%;
-	color:white;
-	text-align:center;
-	padding:15px;
-	background-color:grey;
-	position:relative;
-	margin-top:10px;
-	border:0px solid black;
-}
-
-/* container and columns for base page */
-#container {
-	margin:0px auto;
-	text-align:center;
-	padding:15px;
-	border:none;
 	background-color:none;
 	position:relative;
-	left:50%;
-	min-height:640px;
-	width:840px;
-	margin-top:10px;
-	margin-left:-420px;
-	border:0px solid black;
+	border: 0px solid;
 }
+
+#main-header-links {
+	padding-right:10px;
+	font-size:150%;
+	background-color:none;
+	position:relative;
+	border: 0px solid;
+	width:840px;
+	vertical-align:center;
+}
+
 
 #main-content {
 	margin:0px auto;
@@ -104,18 +107,22 @@ body {
 	background-color:none;
 	text-align:center;
 	}
-	
-/* action bar */	
-#main-actionBar {
-	width:80%;
-	font-size:150%;
-	text-align:center;
-	vertical-align:center;
-	margin-left: auto;
-	margin-right: auto;
-	padding-bottom:20px;
-}	
 
+.gradientV{
+/* thanks to http://blog.fakedarren.com/2010/01/cross-browser-css-gradients/ */
+/* and http://www.puremango.co.uk/2010/04/css-gradient/ */
+/* fallback (Opera) */
+background: #FFFFFF;
+/* Mozilla: */
+background: -moz-linear-gradient(top, #999999, #FFFFFF);
+/* Chrome, Safari:*/
+background: -webkit-gradient(linear,
+			left top, left bottom, from(#999999), to(#FFFFFF));
+/* MSIE */
+filter: progid:DXImageTransform.Microsoft.Gradient(
+			StartColorStr='#999999', EndColorStr='#FFFFFF', GradientType=0);
+}
+  
 /* form input */
 input.text {
 	font-family:helvetica;
@@ -146,10 +153,15 @@ input.submit {
 }
 
 /* links */
-A:link {text-decoration: none; border-bottom: 1px dashed #e74848; color: grey;}
-A:visited {text-decoration: none; border-bottom: 1px dashed #e74848; color: grey;}
-A:active {text-decoration: none; border-bottom: 1px dashed #e74848; color: grey;}
-A:hover { text-decoration: none; border-bottom: 1px solid #e74848; color: red;}
+A:link {text-decoration: none; border: 0px dashed #e74848; color: grey;}
+A:visited {text-decoration: none; border: 0px dashed #e74848; color: grey;}
+A:active {text-decoration: none; border: 0px dashed #e74848; color: grey;}
+A:hover { text-decoration: none; border: 0px solid #e74848; color: red;}
+
+A.footer:link {text-decoration: none; border: none; border-bottom: 1px dashed #e74848; color: white;}
+A.footer:visited {text-decoration: none; border: none; border-bottom: 1px dashed #e74848; color: white;}
+A.footer:active {text-decoration: none; border: none; border-bottom: 1px dashed #e74848; color: white;}
+A.footer:hover { text-decoration: none; border: none; border-bottom: 1px solid #e74848; color: red;}
 
 /* information heading style */
 .text-label {

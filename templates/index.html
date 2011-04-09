@@ -1,75 +1,39 @@
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 	<head>
+		<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}media/css-style.css" />
 		<title>{%block title%}Prologger | v0.1{%endblock%}</title>
 		
 		<style type="text/css">
 		{%block css%}
-			html, body {
-                height:100%;
-				font-family:helvetica;
-            }
-            
-			#wrapper {
-				height-min:100%;
+		#main-index {
+			overflow:none;
+			padding-bottom: 165px;
+			background-color:none;
+			width:840px;
+			margin-left:-420px;	
+			position: relative;
+			left:50%;
 			}
-			
-            #content {
-                margin:0px auto; /* Right and left margin widths set to "auto" */
-                text-align:center; /* Counteract to IE5/Win Hack */
-                padding:15px;
-				padding-bottom:15px;
-                border:none;
-                background-color:none;
-                position:absolute;
-                top:50%;
-                left:50%;
-                height:100px;
-                width:540px;
-                margin-top:-200px;
-                margin-left:-270px;
-				
-            }
-			
-            #header {
-                margin:0px auto;
-                text-align:right;
-                padding:5px;
-                border:0px solid black;
-                background-color:none;
-                position:relative;
-                height:auto;
-            }			
-
-			#footer {
-				font-size:75%;
-				text-align:center;
-				padding:15px;
-				color:white;
-				background-color:grey;
-				position:relative;
-				top:90%;
-				border:0px solid black;
-			}
-            
-            A:link {text-decoration: none; border-bottom: 1px dashed #e74848; color: grey;}
-            A:visited {text-decoration: none; border-bottom: 1px dashed #e74848; color: grey;}
-            A:active {text-decoration: none; border-bottom: 1px dashed #e74848; color: grey;}
-            A:hover { text-decoration: none; border-bottom: 1px solid #e74848; color: red;}
-            {%endblock%}
+        {%endblock%}
 		</style>
 	</head>
 	
 	<body>
 
+    <div id="wrap">
+	
 		<div id="header">
-			<a href="{% url auth_login %}">sign in</a> | 
-			<a href="{% url registration_register %}">sign up</a>
+			<div id="main-header-logout">
+				<a href="{% url auth_login %}">sign in</a> | 
+				<a href="{% url registration_register %}">sign up</a>
+			</div>
 		</div>
 	
-		<div id="content">
+		<div id="main-index" align="center">
 			{%block headerimg%}
-			<a href="http://localhost/" style="text-decoration: none; border:none">
+			<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+			<a href="http://localhost/" style="text-decoration: none; border:none;">
 				<img src="{{MEDIA_URL}}logo-flattened-cropped.png">
 			</a>
 			{%endblock%}
@@ -87,10 +51,31 @@
 			{%endblock%}
 			{%endif%}
 		</div>
-		
-		<div id="footer">
-			Copyright prologger, 2011
-		</div>
+	
+	</div>
+
+    <div id="footer">
+			<table class="footer-contents" align="center">
+			<tr>
+				<td align="left">
+					<h2>About</h2>
+					bla bla bla
+				</td>
+				<td align="left">
+					<h2>Quick Links</h2>
+					<ul>
+						<li><a href="{% url privacyPolicy %}" class="footer">Privacy Policy</a></li>
+						<li><a href="{% url faq %}" class="footer">FAQ</a></li>
+						<li><a href="{% url contact %}" class="footer">Contact</a></li>
+					</ul>
+				</td>			
+				<td align="left">
+					<h2>Suggestion Box</h2>
+					Got an idea? <a href="{% url auth_logout %}" class="footer">Drop us a line!</a><br />
+				</td>						
+			</tr>
+		</table>
+    </div>
 
 	<body>
 

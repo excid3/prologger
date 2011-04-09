@@ -25,6 +25,8 @@ urlpatterns = patterns('',
 	 url(r'^profile/$', 'views.view', {'template' : 'profile.html'}, name = 'profile'),
 	 url(r'^groups/$', 'views.view', {'template' : 'groups.html'}, name = 'groups'),
 	 url(r'^faq/$', 'views.view', {'template' : 'faq.html'}, name = 'faq'),
+	 url(r'^privacyPolicy/$', 'views.view', {'template' : 'privacyPolicy.html'}, name = 'privacyPolicy'),
+	 url(r'^contact/$', 'views.view', {'template' : 'contact.html'}, name = 'contact'),
      (r'^accounts/', include('registration.backends.default.urls')),
     # Uncomment the next line to enable the admin:
      (r'^admin/', include(admin.site.urls)),
