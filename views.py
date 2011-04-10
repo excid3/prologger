@@ -97,9 +97,6 @@ def callback(request):
             login(request, user)
             return HttpResponseRedirect('/accounts/login/')
     
-    
-    return HttpResponseRedirect('/')
-    
 def logout(request):
     logout(request)
     return HttpResponseRedirect('/')
