@@ -5,7 +5,7 @@ from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 # Python
 import oauth2 as oauth
 import cgi
