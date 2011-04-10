@@ -20,7 +20,7 @@ from settings import MEDIA_URL
 
 authorize_url = 'https://github.com/login/oauth/authorize?'
 access_token_url = 'https://github.com/login/oauth/access_token?'
-redirect_url = 'http://prologger.ep.io/oauth/callback/'
+redirect_url = 'http://localhost/oauth/callback/'
 
 
 #TODO move these to settings.py
