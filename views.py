@@ -86,7 +86,7 @@ def callback(request):
         # Save our permanent token and secret for later.
         profile = ProloggerUser()
         profile.user = user
-        profile.oauth_token = token
+        profile.oauthtoken = token
         profile.save()
     
     return HttpResponseRedirect('/')
