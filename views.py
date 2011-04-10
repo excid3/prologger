@@ -88,6 +88,14 @@ def callback(request):
         profile.user = user
         profile.oauthtoken = token
         profile.save()
+        
+        # Authenticate the user and log them in using Django's pre-built 
+        # functions for these things.
+        user = authenticate(username=name.login,password= token)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/accounts/login/')
+    
     
     return HttpResponseRedirect('/')
     
