@@ -1,4 +1,4 @@
-Django==1.2
+Django==1.2.4
 https://bitbucket.org/ubernostrum/django-registration/get/tip.zip
 http://brodidyouhear.com/~myusuf3/python-github2.tar.gz
 http://brodidyouhear.com/~myusuf3/python-oauth2.tar.gz
