@@ -31,7 +31,7 @@ class Achievements(models.Model):
 class ProloggerUser(models.Model):
 	user = models.ForeignKey(User, unique=True)
 	achievements = models.ManyToManyField(Achievements, blank=True)
-	oauth_token = models.CharField(max_length=200)
+	oauthtoken = models.CharField(max_length=200)
 	objects = ProloggerUserManager()
 	
 	def __unicode__(self):
