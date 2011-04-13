@@ -20,7 +20,7 @@ from settings import MEDIA_URL
 
 authorize_url = 'https://github.com/login/oauth/authorize?'
 access_token_url = 'https://github.com/login/oauth/access_token?'
-redirect_url = 'http://localhost/oauth/callback/'
+redirect_url = 'http://localhost:8000/oauth/callback/'
 
 
 #TODO move these to settings.py
@@ -83,25 +83,31 @@ def callback(request):
         user = User.objects.get(username=name.login)
         print user
     except User.DoesNotExist:
-        user = User.objects.create_user(username=name.login, email=name.email)
+        user = User.objects.create_user(username=name.login, email=name.email, password = token )
         # Save our permanent token and secret for later.
         profile = ProloggerUser()
         profile.user = user
         profile.oauthtoken = token
         profile.save()
         
-        # Authenticate the user and log them in using Django's pre-built 
-        # functions for these things.
-        user = authenticate(username=name.login,password= token)
-        if user is not None:
-            login(request, user)
-            return HttpResponseRedirect('/accounts/login/')
+    # Authenticate the user and log them in using Django's pre-built 
+    # functions for these things.
+    print str(name.login)
+    print token
+    user = authenticate(username=str(name.login),password=str(token))
+    print user
+    if user is not None:
+        login(request, user)
+        return HttpResponseRedirect('/accounts/login/')
+    else:
+        return HttpResponseRedirect('/')
     
-def logout(request):
-    logout(request)
-    return HttpResponseRedirect('/')
+def logout_(request):
+     logout(request)
+     return HttpResponseRedirect('/accounts/login/')
+    
 
-def login(request):
+def login_(request):
 	resp, content = client.request(authorize_url, "GET")
 	if resp['status'] != '200':
 	    raise Exception("Invalid response %s." % resp['status'])
