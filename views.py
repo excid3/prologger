@@ -104,7 +104,7 @@ def callback(request):
     
 def logout_(request):
      logout(request)
-     return HttpResponseRedirect('/accounts/login/')
+     return HttpResponseRedirect('/')
     
 
 def login_(request):
