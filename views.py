@@ -5,6 +5,7 @@ from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 # Python
 import oauth2 as oauth
 import cgi
@@ -19,7 +20,7 @@ from settings import MEDIA_URL
 
 authorize_url = 'https://github.com/login/oauth/authorize?'
 access_token_url = 'https://github.com/login/oauth/access_token?'
-redirect_url = 'http://localhost:8000/oauth/callback/'
+redirect_url = 'http://prologger.ep.io/oauth/callback/'
 
 
 #TODO move these to settings.py
@@ -65,9 +66,8 @@ def callback(request):
     redirect_uri=http://www.example.com/oauth_redirect&
     client_secret=...&
     code=..."""
-    _url = 'http://localhost:8000/oauth/callback/'
     code = request.GET['code']
-    url = "%sclient_id=%s&redirect_uri=%s&client_secret=%s&code=%s" % (access_token_url, consumer_key, _url, consumer_secret, code)
+    url = "%sclient_id=%s&redirect_uri=%s&client_secret=%s&code=%s" % (access_token_url, consumer_key, redirect_url, consumer_secret, code)
     print url
     f =  urllib.urlopen(url)
     response = dict(cgi.parse_qsl(f.read()))
@@ -87,10 +87,15 @@ def callback(request):
         # Save our permanent token and secret for later.
         profile = ProloggerUser()
         profile.user = user
-        profile.oauth_token = token
+        profile.oauthtoken = token
         profile.save()
-    
-    return HttpResponseRedirect('/')
+        
+        # Authenticate the user and log them in using Django's pre-built 
+        # functions for these things.
+        user = authenticate(username=name.login,password= token)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/accounts/login/')
     
 def logout(request):
     logout(request)
