@@ -9,6 +9,7 @@
 		#main-index {
 			overflow:none;
 			padding-bottom: 165px;
+			padding-top: 180px;
 			background-color:none;
 			width:840px;
 			margin-left:-420px;	
@@ -24,58 +25,24 @@
     <div id="wrap">
 	
 		<div id="header">
-			<div id="main-header-logout">
-				<a href="{% url auth_login %}">sign in</a> | 
-				<a href="{% url registration_register %}">sign up</a>
-			</div>
+
 		</div>
 	
 		<div id="main-index" align="center">
 			{%block headerimg%}
-			<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-			<a href="http://localhost/" style="text-decoration: none; border:none;">
+			
+			<a href="" style="text-decoration: none; border:none;">
 				<img src="{{MEDIA_URL}}logo-flattened-cropped.png">
 			</a>
 			{%endblock%}
-
-			{% if not github %}		
-			<p style="color: red;">Please submit correct credentials</p>
-			{% else %}
 			
-			{%block content%}	
-
 			<p>
-				Your tagline can go here! <a href="">Learn more</a>.
+				<a href="">Login</a> using your Github Token.
 			</p>
-				
-			{%endblock%}
-			{%endif%}
+			
 		</div>
 	
 	</div>
-
-    <div id="footer">
-			<table class="footer-contents" align="center">
-			<tr>
-				<td align="left">
-					<h2>About</h2>
-					bla bla bla
-				</td>
-				<td align="left">
-					<h2>Quick Links</h2>
-					<ul>
-						<li><a href="{% url privacyPolicy %}" class="footer">Privacy Policy</a></li>
-						<li><a href="{% url faq %}" class="footer">FAQ</a></li>
-						<li><a href="{% url contact %}" class="footer">Contact</a></li>
-					</ul>
-				</td>			
-				<td align="left">
-					<h2>Suggestion Box</h2>
-					Got an idea? <a href="{% url auth_logout %}" class="footer">Drop us a line!</a><br />
-				</td>						
-			</tr>
-		</table>
-    </div>
 
 	<body>
 
