@@ -20,7 +20,7 @@ from settings import MEDIA_URL
 
 authorize_url = 'https://github.com/login/oauth/authorize?'
 access_token_url = 'https://github.com/login/oauth/access_token?'
-redirect_url = 'http://127.0.0.1:8000/oauth/callback/'
+redirect_url = 'http://prologger.ep.io/oauth/callback/'
 
 
 #TODO move these to settings.py
@@ -56,10 +56,6 @@ def analyze_achievements(request):
 	achi = ach.get_achievements()
 	html = "<html><body>The current user is  %s, prologger_user is : %s.</body><p>%s</p></html>" % (user, prologger_user , achi)
 	return HttpResponse(html)
-	
-
-def github_login(request):
-    pass
 	
 def callback(request):
     """POST https://github.com/login/oauth/access_token?
