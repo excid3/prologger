@@ -33,15 +33,15 @@ class AchievementsAnalytics(object):
     achievements = {}
 
     # initializing the the achievements class
-    def __init__(self, username, api_token, prologger_user=None):
-        self.username = username
-        self.api_token = api_token
+    def __init__(self, oauthtoken, prologger_user=None):
+	self.oauthtoken = oauthtoken
         self.prologger_user = prologger_user
-        self.client = Github(self.username, self.api_token, requests_per_second=1)
+	self.username = str(prologger_user.user)
+        self.client = Github(access_token=str(oauthtoken))
         self.achievements = {}
 
     def repoman(self):
-        repo = self.client.repos.list()
+        repo = self.client.repos.list(self.username)
         if len(repo) >= 10:
             repoman = {'repoman': True}
             
@@ -69,7 +69,7 @@ class AchievementsAnalytics(object):
         self.achievements.update(lemming)
 
     def forker(self):
-        repos = self.client.repos.list()
+        repos = self.client.repos.list(self.username)
         forker = {'forker': False}
         for repo in repos:
             if repo.fork:
@@ -80,7 +80,7 @@ class AchievementsAnalytics(object):
         self.achievements.update(forker)
 
     def problems(self):
-        repos = self.client.repos.list()
+        repos = self.client.repos.list(self.username)
         problems = {'problems': False}
         for repo in repos:
             if repo.open_issues > 0:
@@ -100,7 +100,7 @@ class AchievementsAnalytics(object):
         self.achievements.update(likeaboss)
 
     def wiki(self):
-        repos = self.client.repos.list()
+        repos = self.client.repos.list(self.username)
         wiki = {'wiki': False}
         for repo in repos:
             if repo.has_wiki:
@@ -147,7 +147,6 @@ class AchievementsAnalytics(object):
             wearefamily = {'wearefamily': False}
         self.achievements.update(wearefamily)
 
-
     def megarepo(self):
         megarepo = {'megarepo': False}
         user = self.client.users.show(self.username)
@@ -157,11 +156,14 @@ class AchievementsAnalytics(object):
 
     def pottymouth(self):
         pottymouth = {'pottymouth': False}
-        repos = self.client.repos.list()
+	github = Github(str(self.oauthtoken))
+        repos = github.repos.list(self.username)
         commits = []
         words = ['fuck', 'shit', 'piss', 'cunt', 'tits', 'motherfucker', 'cocksucker']
         for repo in repos:
-            commits += self.client.commits.list(str(repo.project))
+	    project = repo.project
+	    print project	
+            commits += github.commits.list(str(project))
             for commit in commits:
                 for word in words:
                     if string_found(word, str(commit.message)) and str(commit.author['login']) == self.username:
@@ -173,7 +175,7 @@ class AchievementsAnalytics(object):
 
     def get_achievements(self):
         print "Getting Achievements..\n"
-        checks = ['pottymouth', 'repoman', 'likeaboss', 'microsoft', 'linus', 'wiki', 'wearefamily', 'megarepo',
+        checks = ['pottymouth','repoman', 'likeaboss', 'microsoft', 'linus', 'wiki', 'wearefamily', 'megarepo',
                   'pushable', 'problems', 'forker', 'lemming', 'party_of_five']
         for check in checks:
             getattr(self, check)()

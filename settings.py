@@ -63,7 +63,7 @@ USE_L10N = True
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/"
 if (sys.platform == 'linux2'):
-	MEDIA_ROOT = '/home/myusuf3/github/prologger/static/'
+	MEDIA_ROOT = '/home/myusuf3/Github/prologger/static/'
 elif(sys.platform == 'darwin'):
 	MEDIA_ROOT = '/Users/bryanenglish/Dropbox/prologger/static/'
 else:
@@ -123,7 +123,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
      'django.contrib.admindocs',
      # registration app
-     'registration',
+  #   'registration',
      'prologger.achievements'
 )
 
