@@ -156,7 +156,7 @@ class AchievementsAnalytics(object):
 
     def pottymouth(self):
         pottymouth = {'pottymouth': False}
-	github = Github(str(self.oauthtoken))
+	github = Github(self.oauthtoken)
         repos = github.repos.list(self.username)
         commits = []
         words = ['fuck', 'shit', 'piss', 'cunt', 'tits', 'motherfucker', 'cocksucker']

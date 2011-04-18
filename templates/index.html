@@ -1,6 +1,8 @@
+{% load dajaxice_templatetags %}
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 	<head>
+		{% dajaxice_js_import %}
 		<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}media/css-style.css" />
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
 		<title>{%block title%}Prologger | v0.1{%endblock%}</title>
@@ -19,9 +21,21 @@
 			}
         {%endblock%}
 		</style>
+        
 	</head>
 	
 	<body>
+
+<script type="text/javascript"> 
+function my_js_callback(data){
+  if(data==Dajaxice.EXCEPTION){
+    alert('Error! Something happens!');
+  }
+  else{
+    alert(data.message);
+  }
+}
+</script> 
 
     <div id="wrap">
 	
@@ -40,6 +54,8 @@
 			<p>
 				<img src="{{MEDIA_URL}}github_32.png"><a href="{%url login%}">Login</a> using your github account.
 			</p>
+
+	<input type="button" name="rand" value="Get message from server!" id="rand" onclick="Dajaxice.prologger.achievements.myexample(my_js_callback);">{% csrf_token %}
 			
 		</div>
 	

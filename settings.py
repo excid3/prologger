@@ -7,6 +7,7 @@ import sys
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+DAJAXICE_NOTIFY_EXCEPTIONS = True
 
 # number of days for activation
 ACCOUNT_ACTIVATION_DAYS = 1
@@ -88,7 +89,8 @@ SECRET_KEY = 'v8+k1v_l$ls+^v@6fphe#_b_l=u9%^)v2^cims6e@-p()-7czu'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+     #Uncommented for JavaScript functionality
+    'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -100,6 +102,9 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'prologger.urls'
+
+#JavaScript functionality
+DAJAXICE_MEDIA_PREFIX="dajaxice"
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -122,8 +127,8 @@ INSTALLED_APPS = (
      'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
      'django.contrib.admindocs',
-     # registration app
-  #   'registration',
+    # JavaScript functionality app
+     'dajaxice',
      'prologger.achievements'
 )
 
