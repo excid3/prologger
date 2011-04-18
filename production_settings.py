@@ -101,7 +101,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'prologger.urls'
+ROOT_URLCONF = 'urls'
 
 #JavaScript functionality
 DAJAXICE_MEDIA_PREFIX="dajaxice"
@@ -129,6 +129,6 @@ INSTALLED_APPS = (
      'django.contrib.admindocs',
     # JavaScript functionality app
      'dajaxice',
-     'prologger.achievements'
+     'achievements'
 )
 
