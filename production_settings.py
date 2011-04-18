@@ -7,6 +7,7 @@ import sys
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+DAJAXICE_NOTIFY_EXCEPTIONS = True
 
 # number of days for activation
 ACCOUNT_ACTIVATION_DAYS = 1
@@ -28,7 +29,7 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'prologger.db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
@@ -63,7 +64,7 @@ USE_L10N = True
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/"
 if (sys.platform == 'linux2'):
-	MEDIA_ROOT = '/home/myusuf3/github/prologger/static/'
+	MEDIA_ROOT = '/home/myusuf3/Github/prologger/static/'
 elif(sys.platform == 'darwin'):
 	MEDIA_ROOT = '/Users/bryanenglish/Dropbox/prologger/static/'
 else:
@@ -88,7 +89,8 @@ SECRET_KEY = 'v8+k1v_l$ls+^v@6fphe#_b_l=u9%^)v2^cims6e@-p()-7czu'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+     #Uncommented for JavaScript functionality
+    'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -99,7 +101,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'prologger.urls'
+
+#JavaScript functionality
+DAJAXICE_MEDIA_PREFIX="dajaxice"
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -122,8 +127,8 @@ INSTALLED_APPS = (
      'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
      'django.contrib.admindocs',
-     # registration app
-     'registration',
-     'achievements'
+    # JavaScript functionality app
+     'dajaxice',
+     'prologger.achievements'
 )
 
