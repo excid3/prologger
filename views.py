@@ -95,7 +95,7 @@ def callback(request):
     print user
     if user is not None:
         login(request, user)
-        return HttpResponseRedirect('/accounts/login/')
+        return HttpResponseRedirect('/analyze/')
     else:
         return HttpResponseRedirect('/')
     
