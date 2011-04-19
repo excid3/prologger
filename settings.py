@@ -66,7 +66,7 @@ USE_L10N = True
 if (sys.platform == 'linux2'):
 	MEDIA_ROOT = '/home/myusuf3/Github/prologger/static/'
 elif(sys.platform == 'darwin'):
-	MEDIA_ROOT = '/Users/bryanenglish/Dropbox/prologger/static/'
+	MEDIA_ROOT = '/source/prologger/static/'
 else:
 	MEDIA_ROOT = 'E:\prologger\/repo\prologger\static\/'
 
