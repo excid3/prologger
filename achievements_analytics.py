@@ -1,9 +1,9 @@
 #!/usr/bin/python
 
 """
+achievements_analytics.py
 
-@author Mahdi Yusuf
-@website www.mahdiyusuf.com
+Created by Mahdi Yusuf on 2011-03-06.
 
 """
 
