@@ -164,7 +164,7 @@ class AchievementsAnalytics(object):
             commits += github.commits.list(str(project))
             for commit in commits:
                 for word in words:
-                    if string_found(word, str(commit.message)) and str(commit.author['login']) == self.username:
+                    if string_found(word, unicode(commit.message)) and unicode(commit.author['login']) == self.username:
                         pottymouth = {'pottymouth': True}
                         break
                     else:
