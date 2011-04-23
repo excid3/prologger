@@ -6,6 +6,8 @@ from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.utils import simplejson
+from django.contrib.auth.models import AnonymousUser
 # Python
 import oauth2 as oauth
 import cgi
@@ -20,7 +22,7 @@ from settings import MEDIA_URL
 
 authorize_url = 'https://github.com/login/oauth/authorize?'
 access_token_url = 'https://github.com/login/oauth/access_token?'
-redirect_url = 'http://prologger.ep.io/oauth/callback/'
+redirect_url = 'http://127.0.0.1:8000/oauth/callback/'
 
 
 #TODO move these to settings.py
@@ -50,12 +52,23 @@ def analyze_achievements(request):
 	user = request.user
 	prologger_user = ProloggerUser.objects.get(user=user)
 	oauthtoken = prologger_user.oauthtoken
-	print oauthtoken
 	ach = AchievementsAnalytics(oauthtoken, prologger_user)
-	print "bla",ach
 	achi = ach.get_achievements()
 	html = "<html><body>The current user is  %s, prologger_user is : %s.</body><p>%s</p></html>" % (user, prologger_user , achi)
 	return HttpResponse(html)
+
+def json_achievements(request):
+    user = request.user
+    if isinstance(user, AnonymousUser):
+       error =  {'error': "You need to be logged in"}
+       json = simplejson.dumps(error)
+       return HttpResponse(json, mimetype='application/json')
+    prologger_user = ProloggerUser.objects.get(user=user)
+    oauthtoken = prologger_user.oauthtoken
+    achievements = AchievementsAnalytics(oauthtoken, prologger_user)
+    json_achievements = achievements.get_achievements()
+    json = simplejson.dumps(json_achievements)
+    return HttpResponse(json, mimetype='application/json')
 	
 def callback(request):
     """POST https://github.com/login/oauth/access_token?

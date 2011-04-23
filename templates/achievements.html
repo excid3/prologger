@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}media/css-style.css" />
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
+		<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/gritter.css" />
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript">google.load('jquery', '1.5');</script>
+		<script type="text/javascript" src="{{MEDIA_URL}}js/jquery.gritter.js"></script>
+		<title>{%block title%}Prologger | v0.1{%endblock%}</title>
+
+	<style type="text/css">
+	{%block css%}
+	#main-index {
+	overflow:none;
+	padding-bottom: 165px;
+	padding-top: 180px;
+	background-color:none;
+	width:840px;
+	margin-left:-420px;	
+	position: relative;
+	left:50%;
+	}
+	{%endblock%}
+	</style>
+
+	</head>
+
+	<body>
+
+	<script type="text/javascript"> 
+$(document).ready(function() {
+    console.log('ready!');
+});
+	$.ajax({
+    // the URL for the request
+    url : '/api/account/achievements/',
+
+    // whether this is a POST or GET request
+    type : 'GET',
+
+    // the type of data we expect back
+    dataType : 'json',
+
+    // code to run if the request succeeds;
+    // the response is passed to the function
+    success : function(json) {
+        $('<p/>').text(json.wiki).appendTo('body');
+    },
+
+    // code to run if the request fails;
+    // the raw request and status codes are
+    // passed to the function
+    error : function(xhr, status) {
+        alert('Sorry, there was a problem!');
+    },
+
+    // code to run regardless of success or failure
+    complete : function(xhr, status) {
+        alert('The request is complete!');
+    }
+});
+
+	</script>
+
+	</body>
+
+</html>
