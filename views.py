@@ -115,7 +115,7 @@ def callback(request):
 def logout_(request):
      logout(request)
      return HttpResponseRedirect('/')
-    
+     
 
 def login_(request):
 	resp, content = client.request(authorize_url, "GET")
