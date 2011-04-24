@@ -34,9 +34,9 @@ class AchievementsAnalytics(object):
 
     # initializing the the achievements class
     def __init__(self, oauthtoken, prologger_user=None):
-	self.oauthtoken = oauthtoken
+        self.oauthtoken = oauthtoken
         self.prologger_user = prologger_user
-	self.username = str(prologger_user.user)
+        self.username = str(prologger_user.user)
         self.client = Github(access_token=str(oauthtoken))
         self.achievements = {}
 
@@ -154,14 +154,13 @@ class AchievementsAnalytics(object):
 
     def pottymouth(self):
         pottymouth = {'pottymouth': False}
-	github = Github(self.oauthtoken)
+        github = Github(self.oauthtoken)
         repos = github.repos.list(self.username)
         commits = []
         words = ['fuck', 'shit', 'piss', 'cunt', 'tits', 'motherfucker', 'cocksucker']
         for repo in repos:
-	    project = repo.project
-	    print project	
-            commits += github.commits.list(str(project))
+            project = repo.project
+            commits += github.commits.list(project)
             for commit in commits:
                 for word in words:
                     if string_found(word, unicode(commit.message)) and unicode(commit.author['login']) == self.username:
@@ -170,11 +169,50 @@ class AchievementsAnalytics(object):
                     else:
                         continue
         self.achievements.update(pottymouth)
+    def top_commiter(self):
+        "achievement if your the top commiter to a repo repo achievement"
+        top_commiter = {'top_commiter': False}
+        repos = self.client.repos.list(self.username)
+        for repo in repos:
+            pass
+
+    def necromancer(self):
+        "achievement if last push to this repository was over a year old repo achievement"
+        necromancer = {'necromancer': False}
+        repos = self.client.repos.list(self.username)
+        for repo in repos:
+            pass
+            
+    def homepage_homie(self):
+        "achievement is homepage is set for one project or more repo achievement"
+        homepage = {'homepage': False}
+        repos = self.client.repos.list(self.username)
+        for repo in repos:
+            homepage = repo.homepage
+            if (str(homepage) != ''):
+                homepage = {'homepage': True}
+                break
+            else:
+                continue
+        self.achievements.update(homepage)
+    def just_download(self):
+        download = {'download': False}
+        repos = self.client.repos.list(self.username)
+        for repo in repos:
+            has_downloads = repo.has_downloads
+            if(has_downloads):
+                download = {'download': True}
+                break
+            else:
+                continue
+        self.achievements.update(download)
+
+
 
     def get_achievements(self):
         print "Getting Achievements..\n"
         checks = ['pottymouth','repoman', 'likeaboss', 'microsoft', 'linus', 'wiki', 'wearefamily', 'megarepo',
-                  'pushable', 'problems', 'forker', 'lemming', 'party_of_five']
+                  'pushable', 'problems', 'forker', 'lemming', 'party_of_five', 'homepage_homie', 'just_download']
         for check in checks:
             getattr(self, check)()
         return self.achievements
@@ -183,17 +221,16 @@ class AchievementsAnalytics(object):
 if __name__ == '__main__':
     exit(main())
 
-
-		
-	
-
+        
+    
 
 
-		
-	
-	
-	
 
-	
-	
+        
+    
+    
+    
+
+    
+    
 
