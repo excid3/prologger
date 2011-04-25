@@ -103,8 +103,6 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'prologger.urls'
 
-#JavaScript functionality
-DAJAXICE_MEDIA_PREFIX="dajaxice"
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -127,8 +125,6 @@ INSTALLED_APPS = (
      'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
      'django.contrib.admindocs',
-    # JavaScript functionality app
-     'dajaxice',
      'prologger.achievements'
 )
 

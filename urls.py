@@ -11,9 +11,6 @@ from views import *
 
 admin.autodiscover()
 
-#JavaScript functionality
-from dajaxice.core import dajaxice_autodiscover
-dajaxice_autodiscover()
 
 urlpatterns = patterns('',
     # Example:
@@ -21,8 +18,6 @@ urlpatterns = patterns('',
 
     # Uncomment the admin/doc line below to enable admin documentation:
      (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-	# Added for JavaScript functionality
-	 (r'^%s/' % settings.DAJAXICE_MEDIA_PREFIX, include('dajaxice.urls')),
      url(r'^$', 'views.view', {'template': 'index.html'}, name='index'),
      url(r'^login/', login_, name = 'login'),
      url(r'^logout/$', logout_, name = 'logout'),
