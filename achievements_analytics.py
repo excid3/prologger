@@ -151,6 +151,22 @@ class AchievementsAnalytics(object):
         if user.disk_usage > 1048576:
             megarepo = {'megarepo': True}
         self.achievements.update(megarepo)
+    
+    def priv_gist(self):
+        private_gist  = {'public_gist': False}
+        user = self.client.users.show(self.username)
+        gist = user.private_gist_count
+        if (gist>0):
+            private_gist = {'private_gist': True}
+        self.achievements.update(private_gist)
+
+    def pub_gist(self):
+        public_gist  = {'public_gist': False}
+        user = self.client.users.show(self.username)
+        gist = user.public_gist_count
+        if (gist>0):
+            public_gist = {'public_gist': True}
+        self.achievements.update(public_gist)
 
     def pottymouth(self):
         pottymouth = {'pottymouth': False}
@@ -206,27 +222,15 @@ class AchievementsAnalytics(object):
             else:
                 continue
         self.achievements.update(download)
-        
-	def pub_gist(self):
-		public_gist  = {'public_gist': False}
-		gist = self.client.users.public_gist_count
-		if (len(gist)>0):
-			public_gist = {'public_gist': True}
-		self.achievements.update(public_gist)
 		
-	def priv_gist(self):
-		private_gist = {'private_gist': False}
-		gist = self.client.users.private_gist_count
-		if(len(gist)>0):
-			private_gist = {'private_gist':True}
-		self.achievements.update(private_gist)
+	
 		
 
 
     def get_achievements(self):
         print "Getting Achievements..\n"
         checks = ['pottymouth','repoman', 'likeaboss', 'microsoft', 'linus', 'wiki', 'wearefamily', 'megarepo',
-                  'pushable', 'problems', 'forker', 'lemming', 'party_of_five', 'homepage_homie', 'just_download','pub_gist','priv_gist']
+                  'pushable', 'problems', 'forker', 'lemming', 'party_of_five', 'homepage_homie', 'just_download','necromancer', 'priv_gist', 'pub_gist']
         for check in checks:
             getattr(self, check)()
         return self.achievements
