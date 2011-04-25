@@ -206,13 +206,27 @@ class AchievementsAnalytics(object):
             else:
                 continue
         self.achievements.update(download)
-
+        
+	def pub_gist(self):
+		public_gist  = {'public_gist': False}
+		gist = self.client.users.public_gist_count
+		if (len(gist)>0):
+			public_gist = {'public_gist': True}
+		self.achievements.update(public_gist)
+		
+	def priv_gist(self):
+		private_gist = {'private_gist': False}
+		gist = self.client.users.private_gist_count
+		if(len(gist)>0):
+			private_gist = {'private_gist':True}
+		self.achievements.update(private_gist)
+		
 
 
     def get_achievements(self):
         print "Getting Achievements..\n"
         checks = ['pottymouth','repoman', 'likeaboss', 'microsoft', 'linus', 'wiki', 'wearefamily', 'megarepo',
-                  'pushable', 'problems', 'forker', 'lemming', 'party_of_five', 'homepage_homie', 'just_download']
+                  'pushable', 'problems', 'forker', 'lemming', 'party_of_five', 'homepage_homie', 'just_download','pub_gist','priv_gist']
         for check in checks:
             getattr(self, check)()
         return self.achievements
