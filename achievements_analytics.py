@@ -42,13 +42,13 @@ class AchievementsAnalytics(object):
 
     def repoman(self):
         repo = self.client.repos.list(self.username)
-        repoman = {'repoman': False}
+        repoman1 = {'repoman': False}
         if len(repo) >= 10:
-            repoman = {'repoman': True}
+            repoman1 = {'repoman': True}
             repoman = Achievements.objects.create(name = "Repoman", date = datetime.now(), description = "Have more than 10 repositories on Github")
             self.prologger_user.achievements.add(repoman)
             self.prologger_user.save()
-        self.achievements.update(repoman)
+        self.achievements.update(repoman1)
 
     def party_of_five(self):
         user = self.client.users.show(self.username)
