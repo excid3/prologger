@@ -222,10 +222,6 @@ class AchievementsAnalytics(object):
             else:
                 continue
         self.achievements.update(download)
-		
-	
-		
-
 
     def get_achievements(self):
         print "Getting Achievements..\n"

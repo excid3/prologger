@@ -2,3 +2,4 @@ Django==1.3
 http://brodidyouhear.com/~myusuf3/python-github2.tar.gz
 http://brodidyouhear.com/~myusuf3/python-oauth2.tar.gz
 http://brodidyouhear.com/~myusuf3/django-dajaxice-0.1.8.1.tar.gz
+South
