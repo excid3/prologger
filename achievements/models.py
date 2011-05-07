@@ -10,10 +10,10 @@ class ProloggerUserManager(models.Manager):
 		pro = ProloggerUser(user = user)
 		pro.save()
 		
-#class AchievementsManager(models.Manager):
-#	def create_achievement(self, name, date, description, points = None):
-#	    achievement = Achievements(name = name, date = date, description = description, points = points)
-#	    achievement.save()
+class AchievementsManager(models.Manager):
+	def create_achievement(self, name, date, description, points = None):
+		achievement = Achievements(name = name, date = date, description = description, points = points)
+		achievement.save()
         
 	
 		
