@@ -13,28 +13,25 @@ admin.autodiscover()
 
 
 urlpatterns = patterns('',
-    # Example:
-    # (r'^prologger/', include('prologger.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-     url(r'^$', 'views.view', {'template': 'index.html'}, name='index'),
-     url(r'^login/', login_, name = 'login'),
-     url(r'^logout/$', logout_, name = 'logout'),
+  
+     #prologger vieews
+     url(r'^$', index , name='index'),
+     url(r'^login/', login_, name='login'),
+     url(r'^logout/$', logout_, name='logout'),
      url(r'^api/account/achievements/',json_achievements),
-     url(r'^achievements/', 'views.view', {'template': 'achievements.html'}, name='achievements'),
-     url(r'^analyze/$',analyze_achievements, name = 'analyze'),
-     url(r'^about/$', 'views.view', {'template': 'about.html'}, name = 'about'),
-     url(r'^home/$', 'views.view', {'template' : 'home.html'}, name = 'home'),
-	 url(r'^profile/$', 'views.view', {'template' : 'profile.html'}, name = 'profile'),
-	 url(r'^groups/$', 'views.view', {'template' : 'groups.html'}, name = 'groups'),
-	 url(r'^faq/$', 'views.view', {'template' : 'faq.html'}, name = 'faq'),
-	 url(r'^privacyPolicy/$', 'views.view', {'template' : 'privacyPolicy.html'}, name = 'privacyPolicy'),
-	 url(r'^contact/$', 'views.view', {'template' : 'contact.html'}, name = 'contact'),
-     #(r'^accounts/', include('registration.backends.default.urls')),
-    # Uncomment the next line to enable the admin:
-     (r'^admin/', include(admin.site.urls)),
+     url(r'^achievements/$', achievements, name='achievements'),
+     url(r'^analyze/$',analyze_achievements, name='analyze'),
+     url(r'^profile/$', profile , name='profile'),
+     url(r'^groups/$', groups , name='groups'),
+     url(r'^home/$', home , name='home'),
+     url(r'^about/$', home , name='about'),
      (r'^oauth/callback/', callback),
+
+     #(r'^accounts/', include('registration.backends.default.urls')),
+     # Uncomment the next line to enable the admin:
+     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+     (r'^admin/', include(admin.site.urls)),
+     
 )
 
 if settings.DEBUG:

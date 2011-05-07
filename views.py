@@ -1,5 +1,5 @@
 #Django
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render
 from django.http import HttpResponse
 from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.utils import simplejson
 from django.contrib.auth.models import AnonymousUser
+
 # Python
 import oauth2 as oauth
 import cgi
@@ -19,12 +20,12 @@ from achievements.models import ProloggerUser
 from achievements_analytics import AchievementsAnalytics
 from settings import MEDIA_URL
 
-
+# Github OAuth urls
 authorize_url = 'https://github.com/login/oauth/authorize?'
 access_token_url = 'https://github.com/login/oauth/access_token?'
 redirect_url = 'http://prologger.ep.io/oauth/callback/'
 
-
+# consumer secret and key needed to authenticate prologger as a valid Github OAuth application
 #TODO move these to settings.py
 consumer_key = 'c4e2f51b2faaed2d1762'
 consumer_secret = 'ca01dbc8e37a89b6de54e48fec27d85e02289314'
@@ -32,32 +33,76 @@ consumer_secret = 'ca01dbc8e37a89b6de54e48fec27d85e02289314'
 consumer = oauth.Consumer(consumer_key, consumer_secret)
 client = oauth.Client(consumer)
 
-def view(request, template):
-	c = {}
-	media = {'MEDIA_URL' : MEDIA_URL }
-	c.update(csrf(request))
-	c.update(media)
-	username = request.POST.get('username', '')
-	api_token = request.POST.get('api_token', '')
-	github = Github(username=username, api_token=api_token)
-	gh = {'github': github}
-	#creating a dictionary for context
-	u = {'username': username}
-	# adding d to c dictionary
-	c.update(u)
-	c.update(gh)
-	return render_to_response(template,  c)
+
+def index(request):
+    """ 
+    landing page view user login and greeting
+
+    """
+    data = []
+    data.append({'MEDIA_URL': MEDIA_URL})
+    return render(request,'index.html', {'data': data})
+
+def profile(request):
+    """
+    user profile view
+    
+    here we will put shit like user profile recently asked questions and github achievements
+    
+    """
+    data = []
+    data.append({'MEDIA_URL': MEDIA_URL})
+    return render(request,'profile.html', {'data': data})
+
+def home (request):
+    """ 
+
+    I am hoping to have a news feed type of things for user to see what their friends are up to.
+
+    """
+    data = []
+    data.append({'MEDIA_URL': MEDIA_URL})
+    return render(request,'home.html', {'data': data})
+
+
+def groups(request):
+    """
+
+    Groups page shows what the dev teams you are part of recent team member stats and achievements
+
+    """
+    data = []
+    data.append({'MEDIA_URL': MEDIA_URL})
+    return render(request,'groups.html', {'data': data})
+
+def achievements(request):
+    """
+    This page is mostly here for testing may not exist in the future. ajax page for the achievements
+    """
+    data = []
+    data.append({'MEDIA_URL': MEDIA_URL})
+    return render(request,'achievements.html', {'data': data})
+
 	
 def analyze_achievements(request):
-	user = request.user
-	prologger_user = ProloggerUser.objects.get(user=user)
-	oauthtoken = prologger_user.oauthtoken
-	ach = AchievementsAnalytics(oauthtoken, prologger_user)
-	achi = ach.get_achievements()
-	html = "<html><body>The current user is  %s, prologger_user is : %s.</body><p>%s</p></html>" % (user, prologger_user , achi)
-	return HttpResponse(html)
+    """
+    This is the current analyze page for the user it allows user to ping to cause an analysis of thier current achievement and renders a simple page fast. 
+    """
+    user = request.user
+    prologger_user = ProloggerUser.objects.get(user=user)
+    oauthtoken = prologger_user.oauthtoken
+    ach = AchievementsAnalytics(oauthtoken, prologger_user)
+    achi = ach.get_achievements()
+    html = "<html><body>The current user is  %s, prologger_user is : %s.</body><p>%s</p></html>" % (user, prologger_user , achi)
+    return HttpResponse(html)
 
 def json_achievements(request):
+
+    """
+
+    This is the first of many prologger end points for ajax to hit against for pseudo realtime user experience 
+
+    """
     user = request.user
     if isinstance(user, AnonymousUser):
        error =  {'error': "You need to be logged in"}
@@ -71,11 +116,12 @@ def json_achievements(request):
     return HttpResponse(json, mimetype='application/json')
 	
 def callback(request):
-    """POST https://github.com/login/oauth/access_token?
-    client_id=...&
-    redirect_uri=http://www.example.com/oauth_redirect&
-    client_secret=...&
-    code=..."""
+    """
+    This is the function dealing with the github authentication. needs to be refactored and cleaned. 
+
+    """
+    # @see https://gist.github.com/960593
+
     code = request.GET['code']
     url = "%sclient_id=%s&redirect_uri=%s&client_secret=%s&code=%s" % (access_token_url, consumer_key, redirect_url, consumer_secret, code)
     print url
@@ -113,15 +159,21 @@ def callback(request):
         return HttpResponseRedirect('/')
     
 def logout_(request):
-     logout(request)
-     return HttpResponseRedirect('/')
+    """
+    Standard logout view
+    """
+    logout(request)
+    return HttpResponseRedirect('/')
      
 
 def login_(request):
-	resp, content = client.request(authorize_url, "GET")
-	if resp['status'] != '200':
-	    raise Exception("Invalid response %s." % resp['status'])
-	request_token = dict(urlparse.parse_qsl(content))
-	url = "%sclient_id=%s&redirect_uri=%s" % (authorize_url, consumer_key, redirect_url)
-	return HttpResponseRedirect(url)
+    """
+    This is the login in view which ends up going to the callback view for the Github OAuth
+    """
+    resp, content = client.request(authorize_url, "GET")
+    if resp['status'] != '200':
+        raise Exception("Invalid response %s." % resp['status'])
+    request_token = dict(urlparse.parse_qsl(content))
+    url = "%sclient_id=%s&redirect_uri=%s" % (authorize_url, consumer_key, redirect_url)
+    return HttpResponseRedirect(url)
 	
