@@ -7,10 +7,7 @@ import sys
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-DAJAXICE_NOTIFY_EXCEPTIONS = True
 
-# number of days for activation
-ACCOUNT_ACTIVATION_DAYS = 1
 
 #email settings
 EMAIL_USE_TLS = True
@@ -103,8 +100,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'urls'
 
-#JavaScript functionality
-DAJAXICE_MEDIA_PREFIX="dajaxice"
+
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
