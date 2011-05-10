@@ -10,7 +10,7 @@ Created by Mahdi Yusuf on 2011-03-06.
 from github2.client import Github
 import sys, re
 from django.utils import simplejson
-from achievements.models import Achievements, ProloggerUser
+from achievements.models import Achievement, ProloggerUser
 from datetime import datetime
 
 
@@ -43,11 +43,10 @@ class AchievementsAnalytics(object):
     def repoman(self):
         repo = self.client.repos.list(self.username)
         repoman1 = {'repoman': False}
-        if len(repo) >= 10:
+        if len(repo) >= 1:
             repoman1 = {'repoman': True}
-            repoman = Achievements.objects.create(name = "Repoman", date = datetime.now(), description = "Have more than 10 repositories on Github")
-            self.prologger_user.achievements.add(repoman)
-            self.prologger_user.save()
+            prolog = self.prologger_user
+            prolog.add_achievement('Repoman')
         self.achievements.update(repoman1)
 
     def party_of_five(self):
@@ -185,6 +184,7 @@ class AchievementsAnalytics(object):
                     else:
                         continue
         self.achievements.update(pottymouth)
+
     def top_commiter(self):
         "achievement if your the top commiter to a repo repo achievement"
         top_commiter = {'top_commiter': False}
@@ -226,7 +226,7 @@ class AchievementsAnalytics(object):
     def get_achievements(self):
         print "Getting Achievements..\n"
         checks = ['pottymouth','repoman', 'likeaboss', 'microsoft', 'linus', 'wiki', 'wearefamily', 'megarepo',
-                  'pushable', 'problems', 'forker', 'lemming', 'party_of_five', 'homepage_homie', 'just_download','necromancer', 'priv_gist', 'pub_gist']
+                  'pushable', 'problems', 'forker', 'lemming', 'party_of_five', 'homepage_homie', 'just_download','necromancer', 'priv_gist', 'pub_gist', 'megarepo']
         for check in checks:
             getattr(self, check)()
         return self.achievements

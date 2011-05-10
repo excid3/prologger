@@ -1,0 +1,264 @@
+[
+  {
+  	"model" : "achievements.achievement",
+  	"pk": 1,
+  	"fields": {
+  		"name" : "Repoman",
+  		"points" : 10,
+  		"description" : "10 or more repositories on Github"
+  	}
+  },
+  {
+  	"model" : "achievements.achievement",
+  	"pk": 2,
+  	"fields": {
+  		"name" : "99 Problems",
+  		"points" : 10,
+  		"description" : "Issues raised against least one or your repositories"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 3,
+  	"fields": {
+  		"name" : "Party Of Five",
+  		"points" : 10,
+  		"description" : "Have at least 5 users following you on Github"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 4,
+  	"fields": {
+  		"name" : "Lemming",
+  		"points" : 10,
+  		"description" : "Following over 100 programmers on Github"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 5,
+  	"fields": {
+  		"name" : "You Forker",
+  		"points" : 10,
+  		"description" : "Having at least one of our repositories a fork of another"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 6,
+  	"fields": {
+  		"name" : "Like A Boss",
+  		"points" : 10,
+  		"description" : "Be the owner of one or more public repositories"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 7,
+  	"fields": {
+  		"name" : "WIKI WIKI YEAH",
+  		"points" : 10,
+  		"description" : "At least one of your repositories has a wiki"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 8,
+  	"fields": {
+  		"name" : "Microsoft",
+  		"points" : 10,
+  		"description" : "Having at least one private repository"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 9,
+  	"fields": {
+  		"name" : "Get That Pandemic",
+  		"points" : 10,
+  		"description" : "Have at least on repository that you can push to directly"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 10,
+  	"fields": {
+  		"name" : "Linus",
+  		"points" : 10,
+  		"description" : "Having at least one public repository"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 11,
+  	"fields": {
+  		"name" : "Kicking It Old School",
+  		"points" : 10,
+  		"description" : "Commit to a repository that has been inactive for over a year."
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 12,
+  	"fields": {
+  		"name" : "We Are Family",
+  		"points" : 10,
+  		"description" : "10 or more repositories"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 13,
+  	"fields": {
+  		"name" : "Mega Repository",
+  		"points" : 10,
+  		"description" : "Having a disk usage over 9000"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 14,
+  	"fields": {
+  		"name" : "Love Letter",
+  		"points" : 10,
+  		"description" : "Having a created at least one private gist"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 15,
+  	"fields": {
+  		"name" : "Task List",
+  		"points" : 10,
+  		"description" : "Having a created at least one public gist"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 16,
+  	"fields": {
+  		"name" : "Pardon My French",
+  		"points" : 10,
+  		"description" : "10 or more repositories"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 17,
+  	"fields": {
+  		"name" : "Tag Your It",
+  		"points" : 10,
+  		"description" : "Tagging at least one of your repositories"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 18,
+  	"fields": {
+  		"name" : "Olive Branch",
+  		"points" : 10,
+  		"description" : "Branching at least on of your repositories"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 19,
+  	"fields": {
+  		"name" : "They Love Me, They Really Love Me",
+  		"points" : 10,
+  		"description" : "Having at least one for your repositories downloaded at least once"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 20,
+  	"fields": {
+  		"name" : "They See Me Rolling, They Hating",
+  		"points" : 10,
+  		"description" : "Having at least 2 watchers on one for your repositories"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 21,
+  	"fields": {
+  		"name" : "Top Commiter",
+  		"points" : 10,
+  		"description" : "The most commits to a particular repository"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 23,
+  	"fields": {
+  		"name" : "Google Me, Bitch.",
+  		"points" : 10,
+  		"description" : "Having the homepage set for at least one of your repositories"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 24,
+  	"fields": {
+  		"name" : "Snakes!?, Why Did It Have To Be Snakes!",
+  		"points" : 10,
+  		"description" : "One of your repositories has Python as the dominant language"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 25,
+  	"fields": {
+  		"name" : "Coffee Time",
+  		"points" : 10,
+  		"description" : "One of your repositories has Java as the dominant language"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 26,
+  	"fields": {
+  		"name" : "C",
+  		"points" : 10,
+  		"description" : "One of your repositories has C as the dominant language"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 27,
+  	"fields": {
+  		"name" : "C++",
+  		"points" : 10,
+  		"description" : "One of your repositories has C++ as the dominant language"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 28,
+  	"fields": {
+  		"name" : "Prolog",
+  		"points" : 10,
+  		"description" : "One of your repositories has Prolog as the dominant language"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 29,
+  	"fields": {
+  		"name" : "Haskell",
+  		"points" : 10,
+  		"description" : "One of your repositories has Haskell as the dominant language"
+  	}
+  },
+    {
+  	"model" : "achievements.achievement",
+  	"pk": 30,
+  	"fields": {
+  		"name" : "Ruby",
+  		"points" : 10,
+  		"description" : "One of your repositories has Ruby as the dominant language"
+  	}
+  }
+
+]

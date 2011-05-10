@@ -9,6 +9,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.utils import simplejson
 from django.contrib.auth.models import AnonymousUser
 
+
 # Python
 import oauth2 as oauth
 import cgi
@@ -16,19 +17,25 @@ import urlparse
 import urllib
 #Prologger
 from github2.client import Github
-from achievements.models import ProloggerUser
+from achievements.models import ProloggerUser, Achievement
 from achievements_analytics import AchievementsAnalytics
-from settings import MEDIA_URL
+from settings import MEDIA_URL, DEBUG
 
 # Github OAuth urls
 authorize_url = 'https://github.com/login/oauth/authorize?'
 access_token_url = 'https://github.com/login/oauth/access_token?'
-redirect_url = 'http://prologger.ep.io/oauth/callback/'
-
-# consumer secret and key needed to authenticate prologger as a valid Github OAuth application
-#TODO move these to settings.py
-consumer_key = 'c4e2f51b2faaed2d1762'
-consumer_secret = 'ca01dbc8e37a89b6de54e48fec27d85e02289314'
+if DEBUG:
+    redirect_url = 'http://127.0.0.1:8000/oauth/callback/'
+    # consumer secret and key needed to authenticate prologger as a valid Github OAuth application
+    #TODO move these to settings.py
+    consumer_key ='23f031a141390affb072'
+    consumer_secret = '27844d1838266470b876e29fbbbb2b303c8ea7f1'
+else:
+    redirect_url = 'http://prologger.ep.io/oauth/callback/'
+    # consumer secret and key needed to authenticate prologger as a valid Github OAuth application
+    #TODO move these to settings.py
+    consumer_key ='c4e2f51b2faaed2d1762'
+    consumer_secret = 'ca01dbc8e37a89b6de54e48fec27d85e02289314'
 
 consumer = oauth.Consumer(consumer_key, consumer_secret)
 client = oauth.Client(consumer)
@@ -79,9 +86,14 @@ def achievements(request):
     """
     This page is mostly here for testing may not exist in the future. ajax page for the achievements
     """
-    data = []
-    data.append({'MEDIA_URL': MEDIA_URL})
-    return render(request,'achievements.html', {'data': data})
+    user = request.user
+    prologger_user = ProloggerUser.objects.get(user=user)
+    achievements =  prologger_user.achievements.all()
+    print achievements
+    data = {}
+    data.update({'user': prologger_user})
+    data.update({'achievements': achievements})
+    return render(request,'achievements.html', data)
 
 	
 def analyze_achievements(request):

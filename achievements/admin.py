@@ -1,5 +1,5 @@
 from django.contrib import admin
-from achievements.models import Achievements, ProloggerUser
+from achievements.models import Achievement, ProloggerUser
 
 
 class AchievementsAdmin(admin.ModelAdmin):
@@ -8,5 +8,5 @@ class AchievementsAdmin(admin.ModelAdmin):
 class ProloggerUserAdmin(admin.ModelAdmin):
     pass
 	
-admin.site.register(Achievements, AchievementsAdmin)
+admin.site.register(Achievement, AchievementsAdmin)
 admin.site.register(ProloggerUser, ProloggerUserAdmin)

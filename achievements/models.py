@@ -11,16 +11,15 @@ class ProloggerUserManager(models.Manager):
 		pro.save()
 		
 class AchievementsManager(models.Manager):
-	def create_achievement(self, name, date, description, points = None):
-		achievement = Achievements(name = name, date = date, description = description, points = points)
+	def create_achievement(self, name, description, points = None):
+		achievement = Achievement(name=name, description=description, points=points)
 		achievement.save()
         
 	
 		
-class Achievements(models.Model):
+class Achievement(models.Model):
 	name = models.CharField(max_length = 40)
 	points = models.IntegerField(blank=True, null = True)
-	date = models.DateField(auto_now_add=True)
 	description = models.CharField(max_length = 140)
 	def __unicode__(self):
 		return self.name
@@ -31,10 +30,16 @@ class Achievements(models.Model):
 class ProloggerUser(models.Model):
 	user = models.ForeignKey(User, unique=True)
 	oauthtoken = models.CharField(max_length = 50)
-	achievements = models.ManyToManyField(Achievements, blank=True)
+	achievements = models.ManyToManyField(Achievement, blank=True)
 	objects = ProloggerUserManager()
 	
 	def __unicode__(self):
 		return u"Prologger information for %s" % self.user
+
 	class Meta:
 	    verbose_name_plural = "ProloggerUsers"
+
+	def add_achievement(self, name):
+            achievement = Achievement.objects.get(name=name)
+            self.achievements.add(achievement)
+            self.save()
