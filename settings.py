@@ -5,9 +5,8 @@
 import os
 import sys
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
-DAJAXICE_NOTIFY_EXCEPTIONS = True
 
 # number of days for activation
 ACCOUNT_ACTIVATION_DAYS = 1
