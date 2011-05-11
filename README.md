@@ -16,7 +16,7 @@ Tracking all the achievements you gain on github. Stackoverflow to follow soon.
 
 Do it using pip. There is a requirements.txt file in the repository. use that to install requirements. 
 
-Here is a blog post summarizing the findings
+Here is a blog post summarizing how its done. 
 
 see http://www.mahdiyusuf.com/post/5282169518/beginners-guide-easy-install-pip-and-virtualenv
 
