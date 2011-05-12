@@ -46,9 +46,7 @@ def index(request):
     landing page view user login and greeting
 
     """
-    data = []
-    data.append({'MEDIA_URL': MEDIA_URL})
-    return render(request,'index.html', {'data': data})
+    return render(request,'index.html')
 
 def profile(request):
     """
@@ -57,8 +55,6 @@ def profile(request):
     here we will put shit like user profile recently asked questions and github achievements
     
     """
-    data = []
-    data.append({'MEDIA_URL': MEDIA_URL})
     return render(request,'profile.html', {'data': data})
 
 def home (request):
@@ -67,8 +63,6 @@ def home (request):
     I am hoping to have a news feed type of things for user to see what their friends are up to.
 
     """
-    data = []
-    data.append({'MEDIA_URL': MEDIA_URL})
     return render(request,'home.html', {'data': data})
 
 
@@ -78,8 +72,6 @@ def groups(request):
     Groups page shows what the dev teams you are part of recent team member stats and achievements
 
     """
-    data = []
-    data.append({'MEDIA_URL': MEDIA_URL})
     return render(request,'groups.html', {'data': data})
 
 def achievements(request):
@@ -91,7 +83,7 @@ def achievements(request):
     achievements =  prologger_user.achievements.all()
     print achievements
     data = {}
-    data.update({'user': prologger_user})
+    data.update({'user': prologger_user.user})
     data.update({'achievements': achievements})
     return render(request,'achievements.html', data)
 
