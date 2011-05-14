@@ -104,7 +104,7 @@
   	"fields": {
   		"name" : "We Are Family",
   		"points" : 10,
-  		"description" : "10 or more repositories"
+  		"description" : "At least having one collaborator on Github"
   	}
   },
     {
@@ -140,7 +140,7 @@
   	"fields": {
   		"name" : "Pardon My French",
   		"points" : 10,
-  		"description" : "10 or more repositories"
+  		"description" : "Swearing at least once in one of your repositories"
   	}
   },
     {
