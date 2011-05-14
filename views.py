@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.utils import simplejson
 from django.contrib.auth.models import AnonymousUser
+from django.contrib.auth.decorators import login_required
 
 
 # Python
@@ -87,7 +88,7 @@ def achievements(request):
     data.update({'achievements': achievements})
     return render(request,'achievements.html', data)
 
-	
+@login_required(login_url='/')
 def analyze_achievements(request):
     """
     This is the current analyze page for the user it allows user to ping to cause an analysis of thier current achievement and renders a simple page fast. 
@@ -103,9 +104,7 @@ def analyze_achievements(request):
 def json_achievements(request):
 
     """
-
     This is the first of many prologger end points for ajax to hit against for pseudo realtime user experience 
-
     """
     user = request.user
     if isinstance(user, AnonymousUser):
@@ -118,6 +117,20 @@ def json_achievements(request):
     json_achievements = achievements.get_achievements()
     json = simplejson.dumps(json_achievements)
     return HttpResponse(json, mimetype='application/json')
+
+def create_prologgeruser(name, email, token):
+    """
+    method to create a prologger user and user give 
+    """
+    if email is None:
+        user = User.objects.create_user(username=name, password = token )
+    else:
+        user = User.objects.create_user(username=name, email=email, password = token )
+    # Save our permanent token and secret for later.
+    profile = ProloggerUser()
+    profile.user = user
+    profile.oauthtoken = token
+    profile.save()
 	
 def callback(request):
     """
@@ -141,14 +154,8 @@ def callback(request):
     
     try:
         user = User.objects.get(username=name.login)
-        print user
     except User.DoesNotExist:
-        user = User.objects.create_user(username=name.login, email=name.email, password = token )
-        # Save our permanent token and secret for later.
-        profile = ProloggerUser()
-        profile.user = user
-        profile.oauthtoken = token
-        profile.save()
+        create_prologgeruser(name.login,name.email,token)
         
     # Authenticate the user and log them in using Django's pre-built 
     # functions for these things.

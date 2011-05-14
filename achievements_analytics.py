@@ -43,7 +43,7 @@ class AchievementsAnalytics(object):
     def repoman(self):
         repo = self.client.repos.list(self.username)
         repoman1 = {'repoman': False}
-        if len(repo) >= 1:
+        if len(repo) >= 10:
             repoman1 = {'repoman': True}
             prolog = self.prologger_user
             prolog.add_achievement('Repoman')
@@ -53,6 +53,8 @@ class AchievementsAnalytics(object):
         user = self.client.users.show(self.username)
         if user.followers_count >= 5:
             partyoffive = {'partyoffive': True}
+            prolog = self.prologger_user
+            prolog.add_achievement('Party Of Five')
         else:
             partyoffive = {'partyoffive': False}
         self.achievements.update(partyoffive)
@@ -61,6 +63,8 @@ class AchievementsAnalytics(object):
         user = self.client.users.show(self.username)
         if user.following_count >= 100:
             lemming = {'lemming': True}
+            prolog = self.prologger_user
+            prolog.add_achievement('Lemming')
         else:
             lemming = {'lemming': False}
         self.achievements.update(lemming)
@@ -71,6 +75,8 @@ class AchievementsAnalytics(object):
         for repo in repos:
             if repo.fork:
                 forker = {'forker': True}
+                prolog = self.prologger_user
+                prolog.add_achievement('You Forker')
                 break
             else:
                 continue
@@ -82,6 +88,8 @@ class AchievementsAnalytics(object):
         for repo in repos:
             if repo.open_issues > 0:
                 problems = {'problems': True}
+                prolog = self.prologger_user
+                prolog.add_achievement('99 Problems')
                 break
             else:
                 continue
@@ -92,6 +100,8 @@ class AchievementsAnalytics(object):
         public_repos = user.owned_private_repo_count
         if public_repos > 0:
             likeaboss = {'likeaboss': True}
+            prolog = self.prologger_user
+            prolog.add_achievement('Like A Boss')
         else:
             likeaboss = {'likeaboss': False}
         self.achievements.update(likeaboss)
@@ -102,6 +112,8 @@ class AchievementsAnalytics(object):
         for repo in repos:
             if repo.has_wiki:
                 wiki = {'wiki': True}
+                prolog = self.prologger_user
+                prolog.add_achievement('WIKI WIKI YEAH')
                 break
             else:
                 continue
@@ -112,6 +124,8 @@ class AchievementsAnalytics(object):
         private_repos = user.total_private_repo_count
         if private_repos > 0:
             microsoft = {'microsoft': True}
+            prolog = self.prologger_user
+            prolog.add_achievement('Microsoft')
         else:
             microsoft = {'microsoft': False}
         self.achievements.update(microsoft)
@@ -121,6 +135,8 @@ class AchievementsAnalytics(object):
         public_repos = user.public_repo_count
         if public_repos > 0:
             linus = {'linus': True}
+            prolog = self.prologger_user
+            prolog.add_achievement('Linus')
         else:
             linus = {'linus': False}
         self.achievements.update(linus)
@@ -129,6 +145,8 @@ class AchievementsAnalytics(object):
         pushable = self.client.repos.pushable()
         if len(pushable) > 0:
             pushable = {'pushable': True}
+            prolog = self.prologger_user
+            prolog.add_achievement('Get That Pandemic')
         else:
             pushable = {'pushable': False}
 
@@ -140,6 +158,8 @@ class AchievementsAnalytics(object):
         collabs = user.collaborators
         if collabs > 0:
             wearefamily = {'wearefamily': True}
+            prolog = self.prologger_user
+            prolog.add_achievement('We Are Family')
         else:
             wearefamily = {'wearefamily': False}
         self.achievements.update(wearefamily)
@@ -149,6 +169,8 @@ class AchievementsAnalytics(object):
         user = self.client.users.show(self.username)
         if user.disk_usage > 1048576:
             megarepo = {'megarepo': True}
+            prolog = self.prologger_user
+            prolog.add_achievement('Mega Repository')
         self.achievements.update(megarepo)
     
     def priv_gist(self):
@@ -157,6 +179,8 @@ class AchievementsAnalytics(object):
         gist = user.private_gist_count
         if (gist>0):
             private_gist = {'private_gist': True}
+            prolog = self.prologger_user
+            prolog.add_achievement('Love Letter')
         self.achievements.update(private_gist)
 
     def pub_gist(self):
@@ -164,6 +188,8 @@ class AchievementsAnalytics(object):
         user = self.client.users.show(self.username)
         gist = user.public_gist_count
         if (gist>0):
+            prolog = self.prologger_user
+            prolog.add_achievement('Task List')
             public_gist = {'public_gist': True}
         self.achievements.update(public_gist)
 
@@ -175,11 +201,13 @@ class AchievementsAnalytics(object):
         words = ['fuck', 'shit', 'piss', 'cunt', 'tits', 'motherfucker', 'cocksucker']
         for repo in repos:
             project = repo.project
-            commits += github.commits.list(project)
+            commits += unicode(github.commits.list(project))
             for commit in commits:
                 for word in words:
                     if string_found(word, unicode(commit.message)) and unicode(commit.author['login']) == self.username:
                         pottymouth = {'pottymouth': True}
+                        prolog = self.prologger_user
+                        prolog.add_achievement('Pardon My French')
                         break
                     else:
                         continue
@@ -207,6 +235,8 @@ class AchievementsAnalytics(object):
             homepage = repo.homepage
             if (str(homepage) != ''):
                 homepage = {'homepage': True}
+                prolog = self.prologger_user
+                prolog.add_achievement('Google Me, Bitch.')
                 break
             else:
                 continue
@@ -218,6 +248,8 @@ class AchievementsAnalytics(object):
             has_downloads = repo.has_downloads
             if(has_downloads):
                 download = {'download': True}
+                prolog = self.prologger_user
+                prolog.add_achievement('Google Me, Bitch.')
                 break
             else:
                 continue
