@@ -201,7 +201,7 @@ class AchievementsAnalytics(object):
         words = ['fuck', 'shit', 'piss', 'cunt', 'tits', 'motherfucker', 'cocksucker']
         for repo in repos:
             project = repo.project
-            commits += unicode(github.commits.list(project))
+            commits += github.commits.list(project)
             for commit in commits:
                 for word in words:
                     if string_found(word, unicode(commit.message)) and unicode(commit.author['login']) == self.username:
