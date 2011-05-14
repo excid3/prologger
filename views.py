@@ -56,7 +56,7 @@ def profile(request):
     here we will put shit like user profile recently asked questions and github achievements
     
     """
-    return render(request,'profile.html', {'data': data})
+    return render(request,'profile.html')
 
 def home (request):
     """ 
@@ -64,7 +64,7 @@ def home (request):
     I am hoping to have a news feed type of things for user to see what their friends are up to.
 
     """
-    return render(request,'home.html', {'data': data})
+    return render(request,'home.html')
 
 
 def groups(request):
@@ -73,7 +73,7 @@ def groups(request):
     Groups page shows what the dev teams you are part of recent team member stats and achievements
 
     """
-    return render(request,'groups.html', {'data': data})
+    return render(request,'groups.html')
 
 def achievements(request):
     """

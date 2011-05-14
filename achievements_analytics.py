@@ -13,11 +13,18 @@ from django.utils import simplejson
 from achievements.models import Achievement, ProloggerUser
 from datetime import datetime
 
-
+#Helper functions
 def string_found(string1, string2):
     if re.search(r"\b" + re.escape(string1) + r"\b", string2):
         return True
     return False
+def uniqify(seq):  
+    # order preserving 
+    checked = [] 
+    for e in seq: 
+        if e not in checked: 
+            checked.append(e) 
+    return checked
 
 #cmdline testing 
 def main():
@@ -40,6 +47,81 @@ class AchievementsAnalytics(object):
         self.client = Github(access_token=str(oauthtoken))
         self.achievements = {}
 
+    def languages(self):
+        languages = []
+        repos = self.client.repos.list(self.username)
+        for repo in repos:
+            print repo.language
+            languages.append(str(repo.language))
+        print uniqify(languages)
+        if "Python" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Snakes!?, Why Did It Have To Be Snakes!')
+        if "C" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('C')
+        if "CoffeeScript" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Coffee Time')
+        if "C++" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('C++')
+        if "Haskell" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Haskell')
+        if "Ruby" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Ruby')
+        if "VimL" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Vimproved')
+        if "Java" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Bean Beans the Magical Fruit')
+        if "Shell" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Koopa')
+        if "PHP" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('PH Level Is Rising!')
+        if "Perl" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Camel Toe')
+        if "JavaScript" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('JavaScript')
+        if "ActionScript" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('LIGHTS, CAMERA, ACTION!')
+        if "Ada" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Ada')
+        if "ASP" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('ASP')
+        if "Assembly" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Assembly')
+        if "Boo" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Boo')
+        if "C#" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('C#')
+        if "Clojure" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Clojure')
+        if "ColdFusion" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('ColdFusion')
+        if "ooc" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('ooc')
+        if "Common Lisp" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Common Lisp')
+
+            
     def repoman(self):
         repo = self.client.repos.list(self.username)
         repoman1 = {'repoman': False}
@@ -258,7 +340,7 @@ class AchievementsAnalytics(object):
     def get_achievements(self):
         print "Getting Achievements..\n"
         checks = ['pottymouth','repoman', 'likeaboss', 'microsoft', 'linus', 'wiki', 'wearefamily', 'megarepo',
-                  'pushable', 'problems', 'forker', 'lemming', 'party_of_five', 'homepage_homie', 'just_download','necromancer', 'priv_gist', 'pub_gist', 'megarepo']
+                  'pushable', 'problems', 'forker', 'lemming', 'party_of_five', 'homepage_homie', 'just_download','necromancer', 'priv_gist', 'pub_gist', 'megarepo', 'languages']
         for check in checks:
             getattr(self, check)()
         return self.achievements

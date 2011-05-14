@@ -212,7 +212,7 @@
   	"fields": {
   		"name" : "Coffee Time",
   		"points" : 10,
-  		"description" : "One of your repositories has Java as the dominant language"
+  		"description" : "One of your repositories has Coffee Script as the dominant language"
   	}
   },
     {
@@ -259,6 +259,437 @@
   		"points" : 10,
   		"description" : "One of your repositories has Ruby as the dominant language"
   	}
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 31,
+    "fields": {
+      "name" : "Vimproved",
+      "points" : 10,
+      "description" : "One of your repositories has VimL as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 32,
+    "fields": {
+      "name" : "Bean Beans the Magical Fruit",
+      "points" : 10,
+      "description" : "One of your repositories has Java as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 33,
+    "fields": {
+      "name" : "Koopa",
+      "points" : 10,
+      "description" : "One of your repositories has Shell as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 34,
+    "fields": {
+      "name" : "PH Level Is Rising!",
+      "points" : 10,
+      "description" : "One of your repositories has PHP as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 35,
+    "fields": {
+      "name" : "Camel Toe",
+      "points" : 10,
+      "description" : "One of your repositories has Perl as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 36,
+    "fields": {
+      "name" : "JavaScript",
+      "points" : 10,
+      "description" : "One of your repositories has JavaScript as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 37,
+    "fields": {
+      "name" : "LIGHTS, CAMERA, ACTION!",
+      "points" : 10,
+      "description" : "One of your repositories has ActionScript as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 38,
+    "fields": {
+      "name" : "Ada",
+      "points" : 10,
+      "description" : "One of your repositories has Ada as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 39,
+    "fields": {
+      "name" : "Arc",
+      "points" : 10,
+      "description" : "One of your repositories has Arc as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 40,
+    "fields": {
+      "name" : "ASP",
+      "points" : 10,
+      "description" : "One of your repositories has ASP as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 41,
+    "fields": {
+      "name" : "Assembly",
+      "points" : 10,
+      "description" : "One of your repositories has Assembly as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 42,
+    "fields": {
+      "name" : "Boo",
+      "points" : 10,
+      "description" : "One of your repositories has Boo as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 43,
+    "fields": {
+      "name" : "C#",
+      "points" : 10,
+      "description" : "One of your repositories has C# as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 44,
+    "fields": {
+      "name" : "Clojure",
+      "points" : 10,
+      "description" : "One of your repositories has Clojure as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 45,
+    "fields": {
+      "name" : "ColdFusion",
+      "points" : 10,
+      "description" : "One of your repositories has ColdFusion as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 46,
+    "fields": {
+      "name" : "ooc",
+      "points" : 10,
+      "description" : "One of your repositories has ooc as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 47,
+    "fields": {
+      "name" : "Common Lisp",
+      "points" : 10,
+      "description" : "One of your repositories has Common Lisp as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 48,
+    "fields": {
+      "name" : "D",
+      "points" : 10,
+      "description" : "One of your repositories has D as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 49,
+    "fields": {
+      "name" : "Delphi",
+      "points" : 10,
+      "description" : "One of your repositories has Delphi as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 50,
+    "fields": {
+      "name" : "Duby",
+      "points" : 10,
+      "description" : "One of your repositories has Duby as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 51,
+    "fields": {
+      "name" : "Dylan",
+      "points" : 10,
+      "description" : "One of your repositories has Dylan as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 52,
+    "fields": {
+      "name" : "Eiffel",
+      "points" : 10,
+      "description" : "One of your repositories has Eiffel as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 53,
+    "fields": {
+      "name" : "Erlang",
+      "points" : 10,
+      "description" : "One of your repositories has Erlang as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 54,
+    "fields": {
+      "name" : "F#",
+      "points" : 10,
+      "description" : "One of your repositories has F# as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 55,
+    "fields": {
+      "name" : "FORTRAN",
+      "points" : 10,
+      "description" : "One of your repositories has FORTRAN as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 56,
+    "fields": {
+      "name" : "Go",
+      "points" : 10,
+      "description" : "One of your repositories has Go as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 57,
+    "fields": {
+      "name" : "Groovy",
+      "points" : 10,
+      "description" : "One of your repositories has Groovy as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 58,
+    "fields": {
+      "name" : "HaXe",
+      "points" : 10,
+      "description" : "One of your repositories has HaXe as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 59,
+    "fields": {
+      "name" : "OCaml",
+      "points" : 10,
+      "description" : "One of your repositories has OCaml as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 60,
+    "fields": {
+      "name" : "Io",
+      "points" : 10,
+      "description" : "One of your repositories has Io as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 61,
+    "fields": {
+      "name" : "Mirah",
+      "points" : 10,
+      "description" : "One of your repositories has Mirah as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 62,
+    "fields": {
+      "name" : "Nu",
+      "points" : 10,
+      "description" : "One of your repositories has Nu as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 63,
+    "fields": {
+      "name" : "Pure Data",
+      "points" : 10,
+      "description" : "One of your repositories has Pure Data as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 64,
+    "fields": {
+      "name" : "SuperCollider",
+      "points" : 10,
+      "description" : "One of your repositories has SuperCollider as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 65,
+    "fields": {
+      "name" : "Objective-J",
+      "points" : 10,
+      "description" : "One of your repositories has Objective-J as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 66,
+    "fields": {
+      "name" : "Tcl Me Elmo",
+      "points" : 10,
+      "description" : "One of your repositories has Tcl as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 67,
+    "fields": {
+      "name" : "Factor",
+      "points" : 10,
+      "description" : "One of your repositories has Factor as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 68,
+    "fields": {
+      "name" : "XQuery",
+      "points" : 10,
+      "description" : "One of your repositories has XQuery as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 69,
+    "fields": {
+      "name" : "Short Bus",
+      "points" : 10,
+      "description" : "One of your repositories has Visual Basic as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 70,
+    "fields": {
+      "name" : "VHDL",
+      "points" : 10,
+      "description" : "One of your repositories has VHDL as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 71,
+    "fields": {
+      "name" : "Verilog",
+      "points" : 10,
+      "description" : "One of your repositories has Verilog as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 72,
+    "fields": {
+      "name" : "Racket",
+      "points" : 10,
+      "description" : "One of your repositories has Racket as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 73,
+    "fields": {
+      "name" : "Vala",
+      "points" : 10,
+      "description" : "One of your repositories has Vala as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 74,
+    "fields": {
+      "name" : "Lua",
+      "points" : 10,
+      "description" : "One of your repositories has Lua as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 75,
+    "fields": {
+      "name" : "sclang",
+      "points" : 10,
+      "description" : "One of your repositories has sclang as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 76,
+    "fields": {
+      "name" : "Self",
+      "points" : 10,
+      "description" : "One of your repositories has Self as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 77,
+    "fields": {
+      "name" : "Smalltalk",
+      "points" : 10,
+      "description" : "One of your repositories has Smalltalk as the dominant language"
+    }
+  },
+  {
+    "model" : "achievements.achievement",
+    "pk": 78,
+    "fields": {
+      "name" : "R",
+      "points" : 10,
+      "description" : "One of your repositories has R as the dominant language"
+    }
   }
-
 ]
