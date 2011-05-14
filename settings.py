@@ -5,7 +5,7 @@
 import os
 import sys
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 # number of days for activation
