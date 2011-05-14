@@ -212,7 +212,7 @@
   	"fields": {
   		"name" : "Coffee Time",
   		"points" : 10,
-  		"description" : "One of your repositories has Coffee Script as the dominant language"
+  		"description" : "One of your repositories has CoffeeScript as the dominant language"
   	}
   },
     {

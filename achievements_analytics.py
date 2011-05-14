@@ -120,7 +120,84 @@ class AchievementsAnalytics(object):
         if "Common Lisp" in languages:
             prolog = self.prologger_user
             prolog.add_achievement('Common Lisp')
-
+        if "D" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('D')
+        if "Dylan" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Dylan')
+        if "Eiffel" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Eiffel')
+        if "Erlang" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Erlang')
+        if "F#" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('F#')
+        if "Go" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Go')
+        if "Groovy" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Groovy')
+        if "Io" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Io')
+        if "Mirah" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Mirah')
+        if "HaXe" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('HaXe')
+        if "OCaml" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('OCaml')
+        if "Nu" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Nu')
+        if "Pure Data" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Pure Data')
+        if "SuperCollider" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('SuperCollider')
+        if "Tcl" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Tcl Me Elmo')
+        if "Visual Basic" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Short Bus')
+        if "Factor" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Factor')
+        if "VHDL" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('VHDL')
+        if "Racket" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Racket')
+        if "Vala" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Vala')
+        if "Lua" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Lua')
+        if "sclang" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('sclang')
+        if "Racket" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Racket')
+        if "Self" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Self')
+        if "Smalltalk" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('Smalltalk')
+        if "R" in languages:
+            prolog = self.prologger_user
+            prolog.add_achievement('R')
             
     def repoman(self):
         repo = self.client.repos.list(self.username)
