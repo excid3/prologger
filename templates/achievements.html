@@ -13,15 +13,52 @@
 	<style type="text/css">
 	{%block css%}
 	#main-index {
-	overflow:none;
-	padding-bottom: 165px;
-	padding-top: 180px;
+
 	background-color:none;
 	width:840px;
 	margin-left:-420px;	
 	position: relative;
 	left:50%;
 	}
+	
+	#achievement-container {
+		overflow:none;
+		padding:10px;
+		background-color:#89CFF0;
+		width:840px;
+		margin-left:-420px;	
+		position: relative;
+		left:50%;
+		text-align:left;
+		border:0px solid;
+		-moz-border-radius: 20px;
+		-webkit-border-radius: 20px;
+		-khtml-border-radius: 20px;
+		border-radius: 20px;
+	}
+	
+	#achievement-icon {
+		overflow:none;
+		padding:10px;
+		background-color:white;
+		height:35px;
+		width:35px;
+		position: relative;
+		float:left;
+		border:1px solid;
+		-moz-border-radius: 20px;
+		-webkit-border-radius: 20px;
+		-khtml-border-radius: 20px;
+		border-radius: 20px;
+	}	
+	
+	.rounded-corners {
+		-moz-border-radius: 20px;
+		-webkit-border-radius: 20px;
+		-khtml-border-radius: 20px;
+		border-radius: 20px;
+	}
+	
 	{%endblock%}
 	</style>
 
@@ -68,11 +105,24 @@ $(document).ready(function() {
 
 <h1>Hi, {{user}}</h1>
 
-	<ul>
+
+
 {% for item in achievements %}
-<li>{{ item }} - {{ item.description }}</li>
+
+<div id="achievement-container">
+	<div id="achievement-icon">
+
+	</div>
+	&nbsp;
+	<font style={font-weight:bold;}>{{ item }}</font>
+	<br/>
+	&nbsp;
+	{{ item.description }}
+</div>
+
+<br/>
 {% endfor %}
-</ul>
+
 
 
 
