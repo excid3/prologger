@@ -370,6 +370,7 @@ class AchievementsAnalytics(object):
             project = repo.project
             repositories.append(project)
         repositories1 = remove_with_dot(repositories)
+        print repositories1
         for repository in repositories1:
             commits += github.commits.list(repository)
             for commit in commits:
@@ -427,7 +428,7 @@ class AchievementsAnalytics(object):
 
     def get_achievements(self):
         print "Getting Achievements..\n"
-        checks = ['pottymouth','repoman', 'likeaboss', 'microsoft', 'linus', 'wiki', 'wearefamily', 'megarepo',
+        checks = ['repoman', 'likeaboss', 'microsoft', 'linus', 'wiki', 'wearefamily', 'megarepo',
                   'pushable', 'problems', 'forker', 'lemming', 'party_of_five', 'homepage_homie', 'just_download','necromancer', 'priv_gist', 'pub_gist', 'megarepo', 'languages']
         for check in checks:
             getattr(self, check)()
