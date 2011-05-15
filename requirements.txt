@@ -1,4 +1,4 @@
 Django==1.3
-http://brodidyouhear.com/~myusuf3/python-github2.tar.gz
+github2
 http://brodidyouhear.com/~myusuf3/python-oauth2.tar.gz
 South
