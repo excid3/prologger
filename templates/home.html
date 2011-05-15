@@ -5,13 +5,13 @@
 	{% endblock %}
 	{% block header %}
 		<div id="main-header-logout">
-			Hello User! | <a href="http://localhost/">logout</a>
+			Hello User! | <a href="{% url index %}">logout</a>
 		</div>
 
 		<table id="main-header-links" align="center">
 			<tr>
 				<td align="left">
-					<a href="http://localhost/" style="text-decoration: none; border:none">
+					<a href="{% url index %}" style="text-decoration: none; border:none">
 					<img src="{{MEDIA_URL}}logo-flattened-cropped-small.png">
 					</a>
 				</td>
