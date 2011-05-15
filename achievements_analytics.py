@@ -360,10 +360,12 @@ class AchievementsAnalytics(object):
         words = ['fuck', 'shit', 'piss', 'cunt', 'tits', 'motherfucker', 'cocksucker']
         for repo in repos:
             project = repo.project
+            if project == 'kennethreitz/osxpython.org' or project == 'kennethreitz/readthedocs.org' or project == 'kennethreitz/vapor.js' :
+                continue
             commits += github.commits.list(project)
             for commit in commits:
                 for word in words:
-                    if string_found(word, unicode(commit.message)) and unicode(commit.author['login']) == self.username:
+                    if string_found(word, commit.message) and commit.author['login'] == self.username:
                         pottymouth = {'pottymouth': True}
                         prolog = self.prologger_user
                         prolog.add_achievement('Pardon My French')
