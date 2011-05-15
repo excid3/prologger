@@ -33,6 +33,7 @@ def remove_with_dot(seq):
         else:
             blah.append(r)
     return blah
+
 #cmdline testing 
 def main():
     username = sys.argv[1]
@@ -58,11 +59,13 @@ class AchievementsAnalytics(object):
         languages = []
         repos = self.client.repos.list(self.username)
         for repo in repos:
-            if repo.language is None:
+            language = repo.__dict__.get('language', None)
+            if language is None:
+                print repo
                 continue
             else:
                 languages.append(str(repo.language))
-        print uniqify(languages)
+        languages=uniqify(languages)
         if "Python" in languages:
             prolog = self.prologger_user
             prolog.add_achievement('Snakes!?, Why Did It Have To Be Snakes!')
