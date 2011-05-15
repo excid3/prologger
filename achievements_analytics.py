@@ -58,8 +58,10 @@ class AchievementsAnalytics(object):
         languages = []
         repos = self.client.repos.list(self.username)
         for repo in repos:
-            print repo.language
-            languages.append(str(repo.language))
+            if repo.language is None:
+                continue
+            else:
+                languages.append(str(repo.language))
         print uniqify(languages)
         if "Python" in languages:
             prolog = self.prologger_user
