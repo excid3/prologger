@@ -26,11 +26,13 @@ def uniqify(seq):
             checked.append(e) 
     return checked
 def remove_with_dot(seq):
+    blah = []
     for r in seq:
-        for char in r:
-            if char == '.':
-                seq.remove(r)
-    return seq
+        if '.' in r:
+            continue
+        else:
+            blah.append(r)
+    return blah
 #cmdline testing 
 def main():
     username = sys.argv[1]
@@ -367,9 +369,8 @@ class AchievementsAnalytics(object):
         for repo in repos:
             project = repo.project
             repositories.append(project)
-        repositories = remove_with_dot(repositories)
-        print repositories
-        for repository in repositories:
+        repositories1 = remove_with_dot(repositories)
+        for repository in repositories1:
             commits += github.commits.list(repository)
             for commit in commits:
                 for word in words:
