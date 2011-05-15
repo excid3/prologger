@@ -360,7 +360,7 @@ class AchievementsAnalytics(object):
         words = ['fuck', 'shit', 'piss', 'cunt', 'tits', 'motherfucker', 'cocksucker']
         for repo in repos:
             project = repo.project
-            if project == 'kennethreitz/osxpython.org':
+            if project == 'kennethreitz/osxpython.org' or project == 'kennethreitz/readthedocs.org' or project == 'kennethreitz/vapor.js' :
                 continue
             commits += github.commits.list(project)
             for commit in commits:
