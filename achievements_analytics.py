@@ -25,7 +25,12 @@ def uniqify(seq):
         if e not in checked: 
             checked.append(e) 
     return checked
-
+def remove_with_dot(seq):
+    for r in seq:
+        for char in r:
+            if char == '.':
+                seq.remove(r)
+    return seq
 #cmdline testing 
 def main():
     username = sys.argv[1]
@@ -357,12 +362,15 @@ class AchievementsAnalytics(object):
         github = Github(self.oauthtoken)
         repos = github.repos.list(self.username)
         commits = []
+        repositories = []
         words = ['fuck', 'shit', 'piss', 'cunt', 'tits', 'motherfucker', 'cocksucker']
         for repo in repos:
             project = repo.project
-            if project == 'kennethreitz/osxpython.org' or project == 'kennethreitz/readthedocs.org' or project == 'kennethreitz/vapor.js' :
-                continue
-            commits += github.commits.list(project)
+            repositories.append(project)
+        repositories = remove_with_dot(repositories)
+        print repositories
+        for repository in repositories:
+            commits += github.commits.list(repository)
             for commit in commits:
                 for word in words:
                     if string_found(word, commit.message) and commit.author['login'] == self.username:
