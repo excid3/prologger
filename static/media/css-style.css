@@ -1,7 +1,7 @@
 html, body {
 	height: 100%;
 	font-family:'Droid Serif';
-	font-size: 24px;
+	font-size: 18px;
 	text-align:center;
 	}
 
@@ -63,7 +63,7 @@ table.footer-contents  td {
 
 #main-header-links {
 	padding-right:10px;
-	font-size:150%;
+	font-size:120%;
 	background-color:none;
 	position:relative;
 	border: 0px solid;
@@ -113,15 +113,15 @@ table.footer-contents  td {
 /* thanks to http://blog.fakedarren.com/2010/01/cross-browser-css-gradients/ */
 /* and http://www.puremango.co.uk/2010/04/css-gradient/ */
 /* fallback (Opera) */
-background: #FFFFFF;
+background: #89CFF0;
 /* Mozilla: */
-background: -moz-linear-gradient(top, #999999, #FFFFFF);
+background: -moz-linear-gradient(top, #c4e5f2, #89CFF0);
 /* Chrome, Safari:*/
 background: -webkit-gradient(linear,
-			left top, left bottom, from(#999999), to(#FFFFFF));
+			left top, left bottom, from(#c4e5f2), to(#89CFF0));
 /* MSIE */
 filter: progid:DXImageTransform.Microsoft.Gradient(
-			StartColorStr='#999999', EndColorStr='#FFFFFF', GradientType=0);
+			StartColorStr='#c4e5f2', EndColorStr='#89CFF0', GradientType=0);
 }
   
 /* form input */

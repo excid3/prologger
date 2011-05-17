@@ -5,7 +5,14 @@
 
 <head>
 	<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}media/css-style.css" />
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
+	<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/gritter.css" />
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	<script type="text/javascript">google.load('jquery', '1.5');</script>
+	<script type="text/javascript" src="{{MEDIA_URL}}js/jquery.gritter.js"></script>
+	<link rel="shortcut icon" href="{{MEDIA_URL}}/favicon.ico" />
     <title>{% block title %}User test{% endblock %}</title>
+	{% block head %}{% endblock %}	
 </head>
 
 <body>

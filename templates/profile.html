@@ -11,12 +11,13 @@
 		<table id="main-header-links" align="center">
 			<tr>
 				<td align="left">
-					<a href="http://localhost/" style="text-decoration: none; border:none">
+					<a href="{% url home %}" style="text-decoration: none; border:none">
 					<img src="{{MEDIA_URL}}logo-flattened-cropped-small.png">
 					</a>
 				</td>
 				<td><a href="{% url home %}">Home</a></td>
 				<td><a href="{% url profile %}">Profile</a></td>
+				<td><a href="{% url achievements %}">Achievements</a></td>
 				<td><a href="{% url groups %}">Groups</a></td>
 				<td><a href="{% url about %}">About</a></td>
 			</tr>

@@ -1,131 +1,92 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+{% extends "base.html" %}
 
-	<head>
-		<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}media/css-style.css" />
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
-		<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/gritter.css" />
-		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-		<script type="text/javascript">google.load('jquery', '1.5');</script>
-		<script type="text/javascript" src="{{MEDIA_URL}}js/jquery.gritter.js"></script>
-		<link rel="shortcut icon" href="{{MEDIA_URL}}/favicon.ico" />
-		<title>{%block title%}Prologger | v0.1{%endblock%}</title>
-
-	<style type="text/css">
-	{%block css%}
-	#main-index {
-
-	background-color:none;
-	width:840px;
-	margin-left:-420px;	
-	position: relative;
-	left:50%;
-	}
+	{% block title %}
+		prologger | v0.2
+	{% endblock %}
 	
-	#achievement-container {
-		overflow:none;
-		padding:10px;
-		background-color:#89CFF0;
-		width:840px;
-		margin-left:-420px;	
-		position: relative;
-		left:50%;
-		text-align:left;
-		border:0px solid;
-		-moz-border-radius: 20px;
-		-webkit-border-radius: 20px;
-		-khtml-border-radius: 20px;
-		border-radius: 20px;
-	}
+	{% block head %}
+		<style type="text/css">
+		
+			#achievement-container {
+				overflow:none;
+				padding:10px;
+				background-color:#89CFF0;
+				width:auto;
+				position: relative;
+				text-align:left;
+				border:1px solid;
+				-moz-border-radius: 20px;
+				-webkit-border-radius: 20px;
+				-khtml-border-radius: 20px;
+				border-radius: 20px;
+			}
+		
+			#achievement-icon {
+				overflow:none;
+				padding:10px;
+				background-color:white;
+				height:25px;
+				width:25px;
+				position: relative;
+				float:left;
+				border:1px solid;
+				-moz-border-radius: 15px;
+				-webkit-border-radius: 15px;
+				-khtml-border-radius: 15px;
+				border-radius: 15px;
+			}	
+			
+			.rounded-corners {
+				-moz-border-radius: 20px;
+				-webkit-border-radius: 20px;
+				-khtml-border-radius: 20px;
+				border-radius: 20px;
+			}
+		
+		</style>
+	{% endblock %}
 	
-	#achievement-icon {
-		overflow:none;
-		padding:10px;
-		background-color:white;
-		height:35px;
-		width:35px;
-		position: relative;
-		float:left;
-		border:1px solid;
-		-moz-border-radius: 20px;
-		-webkit-border-radius: 20px;
-		-khtml-border-radius: 20px;
-		border-radius: 20px;
-	}	
+	{% block header %}
 	
-	.rounded-corners {
-		-moz-border-radius: 20px;
-		-webkit-border-radius: 20px;
-		-khtml-border-radius: 20px;
-		border-radius: 20px;
-	}
-	
-	{%endblock%}
-	</style>
+		<div id="main-header-logout">
+			Hello User! | <a href="http://localhost/">logout</a>
+		</div>
 
-	</head>
+		<table id="main-header-links" align="center">
+			<tr>
+				<td align="left">
+					<a href="{% url home %}" style="text-decoration: none; border:none">
+					<img src="{{MEDIA_URL}}logo-flattened-cropped-small.png">
+					</a>
+				</td>
+				<td><a href="{% url home %}">Home</a></td>
+				<td><a href="{% url profile %}">Profile</a></td>
+				<td><a href="{% url achievements %}">Achievements</a></td>
+				<td><a href="{% url groups %}">Groups</a></td>
+				<td><a href="{% url about %}">About</a></td>
+			</tr>
+		</table>
+	{% endblock %}
 
-	<body>
-<!-- 
-	<script type="text/javascript"> 
-$(document).ready(function() {
-    console.log('ready!');
-});
-	$.ajax({
-    // the URL for the request
-    url : '/api/account/achievements/',
+	{% block content %}
+		
+		<h2 style="text-align:left;">Achievements</h2>
+		
+		{% for item in achievements %}
 
-    // whether this is a POST or GET request
-    type : 'GET',
+		<div id="achievement-container">
+			<div id="achievement-icon">
 
-    // the type of data we expect back
-    dataType : 'json',
+			</div>
+			&nbsp;
+			<span class="text-label">{{ item }}</span>
+			<br/>
+			&nbsp;
+			<font style={font-weight:italic;}>{{ item.description }}</font>
+		</div>
 
-    // code to run if the request succeeds;
-    // the response is passed to the function
-    success : function(json) {
-        $('<p/>').text(json.wiki).appendTo('body');
-    },
+		<br/>
+		{% endfor %}
+	{% endblock %}
 
-    // code to run if the request fails;
-    // the raw request and status codes are
-    // passed to the function
-    error : function(xhr, status) {
-        alert('Sorry, there was a problem!');
-    },
-
-    // code to run regardless of success or failure
-    complete : function(xhr, status) {
-        alert('The request is complete!');
-    }
-});
-
-	</script>
--->
-
-
-<h1>Hi, {{user}}</h1>
-
-
-
-{% for item in achievements %}
-
-<div id="achievement-container">
-	<div id="achievement-icon">
-
-	</div>
-	&nbsp;
-	<font style={font-weight:bold;}>{{ item }}</font>
-	<br/>
-	&nbsp;
-	{{ item.description }}
-</div>
-
-<br/>
-{% endfor %}
-
-
-
-
-	</body>
-
-</html>
+<html>
