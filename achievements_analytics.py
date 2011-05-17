@@ -25,6 +25,14 @@ def uniqify(seq):
         if e not in checked: 
             checked.append(e) 
     return checked
+def remove_with_dot(seq):
+    blah = []
+    for r in seq:
+        if '.' in r:
+            continue
+        else:
+            blah.append(r)
+    return blah
 
 #cmdline testing 
 def main():
@@ -51,9 +59,13 @@ class AchievementsAnalytics(object):
         languages = []
         repos = self.client.repos.list(self.username)
         for repo in repos:
-            print repo.language
-            languages.append(str(repo.language))
-        print uniqify(languages)
+            language = repo.__dict__.get('language', None)
+            if language is None:
+                print repo
+                continue
+            else:
+                languages.append(str(repo.language))
+        languages=uniqify(languages)
         if "Python" in languages:
             prolog = self.prologger_user
             prolog.add_achievement('Snakes!?, Why Did It Have To Be Snakes!')
@@ -357,12 +369,15 @@ class AchievementsAnalytics(object):
         github = Github(self.oauthtoken)
         repos = github.repos.list(self.username)
         commits = []
+        repositories = []
         words = ['fuck', 'shit', 'piss', 'cunt', 'tits', 'motherfucker', 'cocksucker']
         for repo in repos:
             project = repo.project
-            if project == 'kennethreitz/osxpython.org' or project == 'kennethreitz/readthedocs.org' or project == 'kennethreitz/vapor.js' :
-                continue
-            commits += github.commits.list(project)
+            repositories.append(project)
+        repositories1 = remove_with_dot(repositories)
+        print repositories1
+        for repository in repositories1:
+            commits += github.commits.list(repository)
             for commit in commits:
                 for word in words:
                     if string_found(word, commit.message) and commit.author['login'] == self.username:
@@ -418,7 +433,7 @@ class AchievementsAnalytics(object):
 
     def get_achievements(self):
         print "Getting Achievements..\n"
-        checks = ['pottymouth','repoman', 'likeaboss', 'microsoft', 'linus', 'wiki', 'wearefamily', 'megarepo',
+        checks = ['repoman', 'likeaboss', 'microsoft', 'linus', 'wiki', 'wearefamily', 'megarepo',
                   'pushable', 'problems', 'forker', 'lemming', 'party_of_five', 'homepage_homie', 'just_download','necromancer', 'priv_gist', 'pub_gist', 'megarepo', 'languages']
         for check in checks:
             getattr(self, check)()

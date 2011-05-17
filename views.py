@@ -58,6 +58,12 @@ def profile(request):
     """
     return render(request,'profile.html')
 
+def accounts_settings(request):
+    """
+    changing things like username and contact email
+    """
+    pass
+    
 def home (request):
     """ 
 
