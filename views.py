@@ -2,6 +2,7 @@
 from django.shortcuts import render_to_response, render
 from django.http import HttpResponse
 from django.core.context_processors import csrf
+from django.views.decorators.csrf import csrf_protect
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.contrib.auth.models import User
@@ -9,7 +10,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.utils import simplejson
 from django.contrib.auth.models import AnonymousUser
 from django.contrib.auth.decorators import login_required
-
+from django.forms.models import modelformset_factory
 
 # Python
 import oauth2 as oauth
@@ -18,7 +19,7 @@ import urlparse
 import urllib
 #Prologger
 from github2.client import Github
-from achievements.models import ProloggerUser, Achievement
+from achievements.models import ProloggerUser, Achievement, ProloggerUserForm
 from achievements_analytics import AchievementsAnalytics
 from settings import MEDIA_URL, DEBUG
 
@@ -58,12 +59,26 @@ def profile(request):
     """
     return render(request,'profile.html')
 
+@csrf_protect
+@login_required(login_url='/')
 def accounts_settings(request):
     """
     changing things like username and contact email
     """
-    pass
-    
+    user = ProloggerUser.objects.get(user=request.user)
+    if request.method == 'POST':
+        user = ProloggerUser.objects.get(user=request.user)
+        print user
+        form = ProloggerUserForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/achievements/')
+        else:
+            print "SHIIIIIIIIIIIIIIT"
+    else:
+        form = ProloggerUserForm(instance=user)
+    return render(request, 'profile_edit.html', {'form': form})
+
 def home (request):
     """ 
 
@@ -105,7 +120,7 @@ def analyze_achievements(request):
     ach = AchievementsAnalytics(oauthtoken, prologger_user)
     achi = ach.get_achievements()
     html = "<html><body>The current user is  %s, prologger_user is : %s.</body><p>%s</p></html>" % (user, prologger_user , achi)
-    return HttpResponse(html)
+    return HttpResponseRedirect('/achievements/')
 
 def json_achievements(request):
 
