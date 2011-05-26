@@ -144,7 +144,8 @@ def create_prologgeruser(name, email, token):
     method to create a prologger user and user give 
     """
     if email is None:
-        user = User.objects.create_user(username=name, email='go@gmail.com' password = token )
+        email = "go@gmail.com"
+        user = User.objects.create_user(username=name, email=email, password = token )
     else:
         user = User.objects.create_user(username=name, email=email, password = token )
     # Save our permanent token and secret for later.
