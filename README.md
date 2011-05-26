@@ -24,22 +24,25 @@ see http://www.mahdiyusuf.com/post/5282169518/beginners-guide-easy-install-pip-a
 
 # Contributions
 
-If you would like to contribute simply fork the project, setup an github application key [here](https://github.com/account/applications) and insert it there. 
+If you would like to contribute simply fork the project, setup an github application key [here](https://github.com/account/applications) and insert it in the views.py
 
 I would welcome pulls from things I am not skilled in. Like web design. :) Also if you can think of cool achievements, pull requests are more than welcome. Also add yourself to the Authors file. 
 
 # Continuous Deployment
 
-I have a Jenkins instance up at brodidyouhear.com/jenkins -- if you request access email me. When your changes are pulled in it should go live within a couple of minutes :)
+I have a Jenkins instance up at brodidyouhear.com/jenkins -- if you require access email [me](mailto:yusuf.mahdi@gmail.com). When your changes are pulled in it should go live within a couple of minutes :)
 
 prologger.ep.io.
 
 # Special Thanks 
 
 https://github.com/jboesch/Gritter  -- Jordan Boesch
+
 https://github.com/ask/python-github2 -- Ask Solem Hoel
+
 https://github.com/django/django -- Django
-ep.io -- best django hosting site ever. 
+
+[ep.io](http://www.ep.io/) -- best django hosting site ever. 
 
 # Known Issues
 
