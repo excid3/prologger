@@ -8,15 +8,6 @@ import sys
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-# number of days for activation
-ACCOUNT_ACTIVATION_DAYS = 1
-
-#email settings
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'prologgerapp@gmail.com'
-EMAIL_HOST_PASSWORD = 'sketkiUx5'
-EMAIL_PORT = 587
 
 ADMINS = (
      ('Mahdi Yusuf', 'yusuf.mahdi@gmail.com'),

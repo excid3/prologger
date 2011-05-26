@@ -40,3 +40,9 @@ https://github.com/jboesch/Gritter  -- Jordan Boesch
 https://github.com/ask/python-github2 -- Ask Solem Hoel
 https://github.com/django/django -- Django
 ep.io -- best django hosting site ever. 
+
+# Known Issues
+
+Doesn't display properly in IE. 
+
+Rest are highlighted in issues. 
