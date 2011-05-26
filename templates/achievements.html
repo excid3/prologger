@@ -24,7 +24,7 @@
 			#achievement-icon {
 				overflow:none;
 				padding:10px;
-				background-color:white;
+				background-color:none;
 				height:25px;
 				width:25px;
 				position: relative;
@@ -42,6 +42,39 @@
 				-khtml-border-radius: 20px;
 				border-radius: 20px;
 			}
+			
+			#user-info {
+				overflow:none;
+				padding:10px;
+				background-color:white;
+				height:150px;
+				width:auto;
+				position: relative;
+				border:0px solid;
+				border-bottom:1px solid;
+				text-align:left;
+				font-size:250%;
+				
+			}
+
+			#user-image {
+				overflow:hidden;
+				padding:10px;
+				background-color:none;
+				height:120px;
+				width:120px;
+				position: relative;
+				float:left;
+				border:1px solid;
+				-moz-border-radius: 20px;
+				-webkit-border-radius: 20px;
+				-khtml-border-radius: 20px;
+				border-radius: 20px;
+			}
+			
+			#user-table {
+				vertical-align:text-top;
+			}			
 		
 		</style>
 	{% endblock %}
@@ -49,7 +82,7 @@
 	{% block header %}
 	
 		<div id="main-header-logout">
-			Hello User! | <a href="http://localhost/">logout</a>
+			<a href="{% url logout %}">logout</a>
 		</div>
 
 		<table id="main-header-links" align="center">
@@ -59,25 +92,30 @@
 					<img src="{{MEDIA_URL}}logo-flattened-cropped-small.png">
 					</a>
 				</td>
-				<td><a href="{% url home %}">Home</a></td>
-				<td><a href="{% url profile %}">Profile</a></td>
-				<td><a href="{% url achievements %}">Achievements</a></td>
-				<td><a href="{% url groups %}">Groups</a></td>
-				<td><a href="{% url about %}">About</a></td>
+
 			</tr>
 		</table>
 	{% endblock %}
 
 	{% block content %}
 		
-		<h2 style="text-align:left;">Achievements</h2>
+		<div id="user-info">
+			<div id="user-image">
+			</div>
+			&nbsp;		
+			
+			{{user}}
+	
+		</div>
+		<br />
+		
+
 		
 		{% for item in achievements %}
 
-		<div id="achievement-container">
-			<div id="achievement-icon">
 
-			</div>
+		<div id="achievement-container">
+
 			&nbsp;
 			<span class="text-label">{{ item }}</span>
 			<br/>
@@ -89,4 +127,7 @@
 		{% endfor %}
 	{% endblock %}
 
+	{% block footer %}
+		copyright prologger, 2011
+	{% endblock %}
 <html>

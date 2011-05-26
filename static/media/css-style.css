@@ -12,7 +12,7 @@ html, body {
 	
 #main {
 	overflow:auto;
-	padding-bottom: 165px;
+	padding-bottom: 30px;
 	background-color:none;
 	width:840px;
 	margin-left:-420px;	
@@ -24,11 +24,12 @@ html, body {
 
 #footer {
 	position: relative;
-	margin-top: -165px; /* negative value of footer height */
-	height: 165px;
+	margin-top: -30px; /* negative value of footer height */
+	height: 30px;
 	clear:both;
-	background-color:grey;
-	color:white;
+	background-color:none;
+	color:black;
+	font-size: 75%;
 	}
 	
 table.footer-contents  td {
