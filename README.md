@@ -29,6 +29,10 @@ If you would like to contribute simply fork the project, setup an github applica
 
 I would welcome pulls from things I am not skilled in. Like web design. :) Also if you can think of cool achievements, pull requests are more than welcome. Also add yourself to the Authors file. 
 
+# Leaderboard
+
+http://github-high-scores.heroku.com/myusuf3/prologger/high_scores/
+
 # Continuous Deployment
 
 I have a Jenkins instance up at brodidyouhear.com/jenkins -- if you require access email [me](mailto:yusuf.mahdi@gmail.com). When your changes are pulled in it should go live within a couple of minutes :)
