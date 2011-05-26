@@ -1,8 +1,5 @@
 {% extends "base.html" %}
 
-	{% block title %}
-		prologger | v0.2
-	{% endblock %}
 	
 	{% block head %}
 		<style type="text/css">
@@ -10,7 +7,7 @@
 			#achievement-container {
 				overflow:none;
 				padding:10px;
-				background-color:#89CFF0;
+				background-color:#CFCFCF;
 				width:auto;
 				position: relative;
 				text-align:left;
@@ -47,34 +44,16 @@
 				overflow:none;
 				padding:10px;
 				background-color:white;
-				height:150px;
+				height:auto;
 				width:auto;
 				position: relative;
 				border:0px solid;
 				border-bottom:1px solid;
 				text-align:left;
-				font-size:250%;
+				font-size:200%;
 				
 			}
-
-			#user-image {
-				overflow:hidden;
-				padding:10px;
-				background-color:none;
-				height:120px;
-				width:120px;
-				position: relative;
-				float:left;
-				border:1px solid;
-				-moz-border-radius: 20px;
-				-webkit-border-radius: 20px;
-				-khtml-border-radius: 20px;
-				border-radius: 20px;
-			}
 			
-			#user-table {
-				vertical-align:text-top;
-			}			
 		
 		</style>
 	{% endblock %}
@@ -88,7 +67,7 @@
 		<table id="main-header-links" align="center">
 			<tr>
 				<td align="left">
-					<a href="{% url home %}" style="text-decoration: none; border:none">
+					<a href="{% url achievements %}" style="text-decoration: none; border:none">
 					<img src="{{MEDIA_URL}}logo-flattened-cropped-small.png">
 					</a>
 				</td>
@@ -100,11 +79,8 @@
 	{% block content %}
 		
 		<div id="user-info">
-			<div id="user-image">
-			</div>
-			&nbsp;		
 			
-			{{user}}
+			{{user}}, here are the fruits of your labor...
 	
 		</div>
 		<br />
