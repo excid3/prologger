@@ -10,7 +10,8 @@
 
 
 # Prologger?
-Tracking your achievement programming and development contributions online. 
+
+The open-source github achievements system! Prologger will track all your development achievements and create a development log, for you and your friends
 
 # Getting started.
 
