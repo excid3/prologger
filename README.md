@@ -10,13 +10,33 @@
 
 
 # Prologger?
-Tracking all the achievements you gain on github. Stackoverflow to follow soon.
+Tracking your achievement programming and development contributions online. 
 
-## Getting started.
+# Getting started.
 
-Do it using pip. There is a requirements.txt file in the repository. use that to install requirements. 
+Do it using pip. There is a requirements.txt file in the repository. Use that to install requirements. 
+
+pip install -E your_virtualenv -r requirements.txt
 
 Here is a blog post summarizing how its done. 
 
 see http://www.mahdiyusuf.com/post/5282169518/beginners-guide-easy-install-pip-and-virtualenv
 
+# Contributions
+
+If you would like to contribute simply fork the project, setup an github application key [here](https://github.com/account/applications) and insert it there. 
+
+I would welcome pulls from things I am not skilled in. Like web design. :) Also if you can think of cool achievements, pull requests are more than welcome. Also add yourself to the Authors file. 
+
+# Continuous Deployment
+
+I have a Jenkins instance up at brodidyouhear.com/jenkins -- if you request access email me. When your changes are pulled in it should go live within a couple of minutes :)
+
+prologger.ep.io.
+
+# Special Thanks 
+
+https://github.com/jboesch/Gritter  -- Jordan Boesch
+https://github.com/ask/python-github2 -- Ask Solem Hoel
+https://github.com/django/django -- Django
+ep.io -- best django hosting site ever. 

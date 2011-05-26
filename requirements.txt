@@ -1,4 +1,12 @@
 Django==1.3
-github2
-http://brodidyouhear.com/~myusuf3/python-oauth2.tar.gz
-South
+PIL==1.1.7
+South==0.7.3
+clint==0.2.3
+github2==0.3.1
+httplib2==0.6.0
+humble==0.1.2
+oauth2==1.5.168
+requests==0.3.3
+simplejson==2.1.6
+wsgiref==0.1.2
+yolk==0.4.1
