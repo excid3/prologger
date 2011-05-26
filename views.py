@@ -115,10 +115,7 @@ def analyze_achievements(request):
     This is the current analyze page for the user it allows user to ping to cause an analysis of thier current achievement and renders a simple page fast. 
     """
     user = request.user
-    try:
-        prologger_user = ProloggerUser.objects.get(user=user)
-    except:
-        return HttpResponseRedirect('/')
+    prologger_user = ProloggerUser.objects.get(user=user)
     oauthtoken = prologger_user.oauthtoken
     ach = AchievementsAnalytics(oauthtoken, prologger_user)
     achi = ach.get_achievements()
