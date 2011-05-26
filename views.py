@@ -115,7 +115,10 @@ def analyze_achievements(request):
     This is the current analyze page for the user it allows user to ping to cause an analysis of thier current achievement and renders a simple page fast. 
     """
     user = request.user
-    prologger_user = ProloggerUser.objects.get(user=user)
+    try:
+        prologger_user = ProloggerUser.objects.get(user=user)
+    except:
+        return HttpResponseRedirect('/')
     oauthtoken = prologger_user.oauthtoken
     ach = AchievementsAnalytics(oauthtoken, prologger_user)
     achi = ach.get_achievements()
@@ -144,7 +147,7 @@ def create_prologgeruser(name, email, token):
     method to create a prologger user and user give 
     """
     if email is None:
-        user = User.objects.create_user(username=name, password = token )
+        user = User.objects.create_user(username=name, email='go@gmail.com' password = token )
     else:
         user = User.objects.create_user(username=name, email=email, password = token )
     # Save our permanent token and secret for later.
